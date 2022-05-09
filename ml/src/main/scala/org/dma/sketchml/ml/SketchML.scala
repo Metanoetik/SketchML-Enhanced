@@ -7,4 +7,8 @@ import org.dma.sketchml.ml.conf.MLConf
 
 object SketchML {
   def main(args: Array[String]): Unit = {
-    val sparkConf = new SparkConf().
+    val sparkConf = new SparkConf().setAppName("SketchML")
+    implicit val sc = SparkContext.getOrCreate(sparkConf)
+    val mlConf = MLConf(sparkConf)
+    val model = mlConf.algo match {
+      case Constants.M
