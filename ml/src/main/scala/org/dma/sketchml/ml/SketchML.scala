@@ -11,4 +11,6 @@ object SketchML {
     implicit val sc = SparkContext.getOrCreate(sparkConf)
     val mlConf = MLConf(sparkConf)
     val model = mlConf.algo match {
-      case Constants.M
+      case Constants.ML_LOGISTIC_REGRESSION => LRModel(mlConf)
+      case Constants.ML_SUPPORT_VECTOR_MACHINE => SVMModel(mlConf)
+      case Constants.ML_LINEAR_REGRESSION => LinearRegModel(ml
