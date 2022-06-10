@@ -13,4 +13,14 @@ object SketchML {
     val model = mlConf.algo match {
       case Constants.ML_LOGISTIC_REGRESSION => LRModel(mlConf)
       case Constants.ML_SUPPORT_VECTOR_MACHINE => SVMModel(mlConf)
-      case Constants.ML_LINEAR_REGRESSION => LinearRegModel(ml
+      case Constants.ML_LINEAR_REGRESSION => LinearRegModel(mlConf)
+      case _ => throw new UnknownError("Unsupported algorithm: " + mlConf.algo)
+    }
+
+    model.loadData()
+    model.train()
+
+    // TODO: test data
+  }
+
+}
