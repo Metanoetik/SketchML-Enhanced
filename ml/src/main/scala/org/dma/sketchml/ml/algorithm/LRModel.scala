@@ -12,4 +12,8 @@ object LRModel {
 
   def apply(conf: MLConf): LRModel = new LRModel(conf)
 
-  def getName: String = Constants
+  def getName: String = Constants.ML_LOGISTIC_REGRESSION
+}
+
+class LRModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
+  @transient override protected val logger: Logger = LRMod
