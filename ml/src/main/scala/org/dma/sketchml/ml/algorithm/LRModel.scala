@@ -7,4 +7,9 @@ import org.dma.sketchml.ml.conf.MLConf
 import org.dma.sketchml.ml.objective.{Adam, L2LogLoss}
 import org.slf4j.{Logger, LoggerFactory}
 
-obje
+object LRModel {
+  private val logger: Logger = LoggerFactory.getLogger(LRModel.getClass)
+
+  def apply(conf: MLConf): LRModel = new LRModel(conf)
+
+  def getName: String = Constants
