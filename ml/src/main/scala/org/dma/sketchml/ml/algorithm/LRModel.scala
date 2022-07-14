@@ -16,4 +16,8 @@ object LRModel {
 }
 
 class LRModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
-  @transient override protected val logger: Logger = LRMod
+  @transient override protected val logger: Logger = LRModel.logger
+
+  override protected def initModel(): Unit = {
+    executors.foreach(_ => {
+      weights = new DenseVector(new Array[Double](bcConf.value.featureNum))
