@@ -7,4 +7,7 @@ import org.dma.sketchml.ml.conf.MLConf
 import org.dma.sketchml.ml.objective.{Adam, L2SquareLoss}
 import org.slf4j.{Logger, LoggerFactory}
 
-object Line
+object LinearRegModel {
+  private val logger: Logger = LoggerFactory.getLogger(LinearRegModel.getClass)
+
+  def apply(conf: MLConf): LinearRegModel = new LinearRegModel(co
