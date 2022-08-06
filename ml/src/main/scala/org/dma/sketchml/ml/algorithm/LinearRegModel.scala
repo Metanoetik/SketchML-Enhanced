@@ -20,4 +20,10 @@ class LinearRegModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
 
   override protected def initModel(): Unit = {
     executors.foreach(_ => {
-      weights = new DenseVector(new 
+      weights = new DenseVector(new Array[Double](bcConf.value.featureNum))
+      optimizer = Adam(bcConf.value)
+      loss = new L2SquareLoss(bcConf.value.l2Reg)
+    })
+  }
+
+  override def g
