@@ -10,4 +10,10 @@ import org.slf4j.{Logger, LoggerFactory}
 object LinearRegModel {
   private val logger: Logger = LoggerFactory.getLogger(LinearRegModel.getClass)
 
-  def apply(conf: MLConf): LinearRegModel = new LinearRegModel(co
+  def apply(conf: MLConf): LinearRegModel = new LinearRegModel(conf)
+
+  def getName: String = Constants.ML_LINEAR_REGRESSION
+}
+
+class LinearRegModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
+  @transient override p
