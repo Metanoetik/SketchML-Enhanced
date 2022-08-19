@@ -26,4 +26,6 @@ class LinearRegModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
     })
   }
 
-  override def g
+  override def getName: String = LinearRegModel.getName
+
+}
