@@ -33,3 +33,52 @@ object MLConf {
   // Sketch Conf
   val SKETCH_GRADIENT_COMPRESSOR: String = "spark.sketchml.gradient.compressor"
   val DEFAULT_SKETCH_GRADIENT_COMPRESSOR: String = GRADIENT_COMPRESSOR_SKETCH
+  val SKETCH_QUANTIZATION_BIN_NUM: String = "spark.sketchml.quantization.bin.num"
+  val DEFAULT_SKETCH_QUANTIZATION_BIN_NUM: Int = Quantizer.DEFAULT_BIN_NUM
+  val SKETCH_MINMAXSKETCH_GROUP_NUM: String = "spark.sketchml.minmaxsketch.group.num"
+  val DEFAULT_SKETCH_MINMAXSKETCH_GROUP_NUM: Int = GroupedMinMaxSketch.DEFAULT_MINMAXSKETCH_GROUP_NUM
+  val SKETCH_MINMAXSKETCH_ROW_NUM: String = "spark.sketchml.minmaxsketch.row.num"
+  val DEFAULT_SKETCH_MINMAXSKETCH_ROW_NUM: Int = MinMaxSketch.DEFAULT_MINMAXSKETCH_ROW_NUM
+  val SKETCH_MINMAXSKETCH_COL_RATIO: String = "spark.sketchml.minmaxsketch.col.ratio"
+  val DEFAULT_SKETCH_MINMAXSKETCH_COL_RATIO: Double = GroupedMinMaxSketch.DEFAULT_MINMAXSKETCH_COL_RATIO
+  // FixedPoint Conf
+  val FIXED_POINT_BIT_NUM: String = "spark.sketchml.fixed.point.bit.num"
+  val DEFAULT_FIXED_POINT_BIT_NUM = 8
+
+  def apply(sparkConf: SparkConf): MLConf = MLConf(
+    sparkConf.get(ML_ALGORITHM),
+    sparkConf.get(ML_INPUT_PATH),
+    sparkConf.get(ML_INPUT_FORMAT),
+    sparkConf.get(ML_NUM_WORKER).toInt,
+    sparkConf.get(ML_NUM_FEATURE).toInt,
+    sparkConf.getDouble(ML_VALID_RATIO, DEFAULT_ML_VALID_RATIO),
+    sparkConf.getInt(ML_EPOCH_NUM, DEFAULT_ML_EPOCH_NUM),
+    sparkConf.getDouble(ML_BATCH_SAMPLE_RATIO, DEFAULT_ML_BATCH_SAMPLE_RATIO),
+    sparkConf.getDouble(ML_LEARN_RATE, DEFAULT_ML_LEARN_RATE),
+    sparkConf.getDouble(ML_LEARN_DECAY, DEFAULT_ML_LEARN_DECAY),
+    sparkConf.getDouble(ML_REG_L1, DEFAULT_ML_REG_L1),
+    sparkConf.getDouble(ML_REG_L2, DEFAULT_ML_REG_L2),
+    sparkConf.get(SKETCH_GRADIENT_COMPRESSOR, DEFAULT_SKETCH_GRADIENT_COMPRESSOR),
+    sparkConf.getInt(SKETCH_QUANTIZATION_BIN_NUM, DEFAULT_SKETCH_QUANTIZATION_BIN_NUM),
+    sparkConf.getInt(SKETCH_MINMAXSKETCH_GROUP_NUM, DEFAULT_SKETCH_MINMAXSKETCH_GROUP_NUM),
+    sparkConf.getInt(SKETCH_MINMAXSKETCH_ROW_NUM, DEFAULT_SKETCH_MINMAXSKETCH_ROW_NUM),
+    sparkConf.getDouble(SKETCH_MINMAXSKETCH_COL_RATIO, DEFAULT_SKETCH_MINMAXSKETCH_COL_RATIO),
+    sparkConf.getInt(FIXED_POINT_BIT_NUM, DEFAULT_FIXED_POINT_BIT_NUM)
+  )
+
+}
+
+case class MLConf(algo: String, input: String, format: String, workerNum: Int,
+                  featureNum: Int, validRatio: Double, epochNum: Int,batchSpRatio: Double,
+                  learnRate: Double, learnDecay: Double, l1Reg: Double, l2Reg: Double,
+                  compressor: String, quantBinNum: Int, sketchGroupNum: Int,
+                  sketchRowNum: Int, sketchColRatio: Double, fixedPointBitNum: Int) {
+  require(Seq(ML_LOGISTIC_REGRESSION, ML_SUPPORT_VECTOR_MACHINE, ML_LINEAR_REGRESSION).contains(algo),
+    throw new SketchMLException(s"Unsupported algorithm: $algo"))
+  require(Seq(FORMAT_LIBSVM, FORMAT_CSV, FORMAT_DUMMY).contains(format),
+    throw new SketchMLException(s"Unrecognizable file format: $format"))
+  require(Seq(GRADIENT_COMPRESSOR_SKETCH, GRADIENT_COMPRESSOR_FIXED_POINT, GRADIENT_COMPRESSOR_ZIP,
+    GRADIENT_COMPRESSOR_FLOAT, GRADIENT_COMPRESSOR_NONE).contains(compressor),
+    throw new SketchMLException(s"Unrecognizable gradient compressor: $compressor"))
+
+}
