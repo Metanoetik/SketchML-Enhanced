@@ -16,4 +16,9 @@ object SVMModel {
 }
 
 class SVMModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
-  @transient override protected val logger:
+  @transient override protected val logger: Logger = SVMModel.logger
+
+  override protected def initModel(): Unit = {
+    executors.foreach(_ => {
+      weights = new DenseVector(new Array[Double](bcConf.value.featureNum))
+      opt
