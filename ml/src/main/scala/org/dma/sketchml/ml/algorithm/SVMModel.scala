@@ -10,4 +10,10 @@ import org.slf4j.{Logger, LoggerFactory}
 object SVMModel {
   private val logger: Logger = LoggerFactory.getLogger(SVMModel.getClass)
 
-  def apply(conf: MLConf): SVMModel = new SVMMo
+  def apply(conf: MLConf): SVMModel = new SVMModel(conf)
+
+  def getName: String = Constants.ML_SUPPORT_VECTOR_MACHINE
+}
+
+class SVMModel(_conf: MLConf) extends GeneralizedLinearModel(_conf) {
+  @transient override protected val logger:
