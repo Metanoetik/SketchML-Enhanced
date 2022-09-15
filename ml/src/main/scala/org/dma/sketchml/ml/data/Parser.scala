@@ -55,3 +55,25 @@ object Parser {
     val nnz = splits.length - 1
     val values = splits.slice(1, nnz + 1).map(_.trim.toDouble)
     val x = Vectors.dense(values)
+
+    LabeledData(y, x)
+  }
+
+  def parseDummy(line: String, maxDim: Int, negY: Boolean = true): LabeledData = {
+    val splits = line.trim.split(",")
+    if (splits.length < 1)
+      return null
+
+    var y = splits(0).toDouble
+    if (negY && Math.abs(y - 1) > Maths.EPS)
+      y = -1
+
+    val nnz = splits.length - 1
+    val indices = splits.slice(1, nnz + 1).map(_.trim.toInt)
+    val values = Array.fill(nnz)(1.0)
+    val x = Vectors.sparse(maxDim, indices, values)
+
+    LabeledData(y, x)
+  }
+
+}
