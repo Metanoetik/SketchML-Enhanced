@@ -91,3 +91,45 @@ class GradientDescent(dim: Int, lr_0: Double, decay: Double, batchSpRatio: Doubl
     val startTime = System.currentTimeMillis()
     val lr = lr_0 / Math.sqrt(1.0 + decay * epoch)
     grad match {
+      case dense: DenseDoubleGradient => update(dense, weight, lr)
+      case sparse: SparseDoubleGradient => update(sparse, weight, lr)
+      case dense: DenseFloatGradient => update(dense, weight, lr)
+      case sparse: SparseFloatGradient => update(sparse, weight, lr)
+      case sketchGrad: SketchGradient => update(sketchGrad.toAuto, weight)
+      case fpGrad: FixedPointGradient => update(fpGrad.toAuto, weight)
+      case zipGrad: ZipGradient => update(zipGrad.toAuto, weight)
+    }
+    logger.info(s"Update weight cost ${System.currentTimeMillis() - startTime} ms")
+  }
+
+  private def update(grad: DenseDoubleGradient, weight: DenseVector, lr: Double): Unit = {
+    val g = grad.values
+    val w = weight.values
+    for (i <- w.indices)
+      w(i) -= g(i) * lr
+  }
+
+  private def update(grad: SparseDoubleGradient, weight: DenseVector, lr: Double): Unit = {
+    val k = grad.indices
+    val v = grad.values
+    val w = weight.values
+    for (i <- k.indices)
+      w(k(i)) -= v(i) * lr
+  }
+
+  private def update(grad: DenseFloatGradient, weight: DenseVector, lr: Double): Unit = {
+    val g = grad.values
+    val w = weight.values
+    for (i <- w.indices)
+      w(i) -= g(i) * lr
+  }
+
+  private def update(grad: SparseFloatGradient, weight: DenseVector, lr: Double): Unit = {
+    val k = grad.indices
+    val v = grad.values
+    val w = weight.values
+    for (i <- k.indices)
+      w(k(i)) -= v(i) * lr
+  }
+
+}
