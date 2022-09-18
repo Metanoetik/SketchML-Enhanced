@@ -20,4 +20,12 @@ trait Loss extends Serializable {
 }
 
 abstract class L1Loss extends Loss {
-  protected var lambda: Dou
+  protected var lambda: Double
+
+  override def isL1Reg: Boolean = this.lambda > Maths.EPS
+
+  override def isL2Reg: Boolean = false
+
+  override def getRegParam: Double = lambda
+
+  override def getReg(w: Vector): Doub
