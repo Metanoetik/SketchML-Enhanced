@@ -10,4 +10,14 @@ trait Loss extends Serializable {
 
   def predict(w: Vector, x: Vector): Double
 
-  def 
+  def isL1Reg: Boolean
+
+  def isL2Reg: Boolean
+
+  def getRegParam: Double
+
+  def getReg(w: Vector): Double
+}
+
+abstract class L1Loss extends Loss {
+  protected var lambda: Dou
