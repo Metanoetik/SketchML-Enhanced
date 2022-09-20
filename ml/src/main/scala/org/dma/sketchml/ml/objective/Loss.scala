@@ -39,4 +39,11 @@ abstract class L1Loss extends Loss {
 abstract class L2Loss extends Loss {
   protected var lambda: Double
 
-  def isL1Reg: B
+  def isL1Reg: Boolean = false
+
+  def isL2Reg: Boolean = lambda > Maths.EPS
+
+  override def getRegParam: Double = lambda
+
+  override def getReg(w: Vector): Double = {
+    i
