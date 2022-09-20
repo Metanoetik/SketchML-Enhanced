@@ -28,4 +28,15 @@ abstract class L1Loss extends Loss {
 
   override def getRegParam: Double = lambda
 
-  override def getReg(w: Vector): Doub
+  override def getReg(w: Vector): Double = {
+    if (isL1Reg)
+      Vectors.norm(w, 1) * lambda
+    else
+      0.0
+  }
+}
+
+abstract class L2Loss extends Loss {
+  protected var lambda: Double
+
+  def isL1Reg: B
