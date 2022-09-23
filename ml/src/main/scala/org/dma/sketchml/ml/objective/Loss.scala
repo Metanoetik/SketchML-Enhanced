@@ -63,4 +63,11 @@ class L1LogLoss(l: Double) extends L1Loss {
     else if (z < -18)
       -z
     else
-     
+      Math.log(1 + Math.exp(-z))
+  }
+
+  override def grad(pre: Double, y: Double): Double = {
+    val z = pre * y
+    if (z > 18)
+      y * Math.exp(-z)
+    else if (z < 
