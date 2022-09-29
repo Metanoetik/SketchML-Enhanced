@@ -70,4 +70,13 @@ class L1LogLoss(l: Double) extends L1Loss {
     val z = pre * y
     if (z > 18)
       y * Math.exp(-z)
-    else if (z < 
+    else if (z < -18)
+      y
+    else
+      y / (1.0 + Math.exp(z))
+  }
+
+  override def predict(w: Vector, x: Vector): Double = Maths.dot(w, x)
+}
+
+class L2HingeLoss(l: Double) extends 
