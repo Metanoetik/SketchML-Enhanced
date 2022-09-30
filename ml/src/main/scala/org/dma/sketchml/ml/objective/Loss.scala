@@ -113,4 +113,14 @@ class L2LogLoss(l: Double) extends L2Loss {
       Math.log(1.0 + Math.exp(-z))
   }
 
-  override def 
+  override def grad(pre: Double, y: Double): Double = {
+    val z = pre * y
+    if (z > 18)
+      y * Math.exp(-z)
+    else if (z < -18)
+      y
+    else
+      y / (1.0 + Math.exp(z))
+  }
+
+  override def pred
