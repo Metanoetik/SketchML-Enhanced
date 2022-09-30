@@ -104,4 +104,13 @@ class L2LogLoss(l: Double) extends L2Loss {
   override protected var lambda: Double = l
 
   override def loss(pre: Double, y: Double): Double = {
-  
+    val z = pre * y
+    if (z > 18)
+      Math.exp(-z)
+    else if (z < -18)
+      -z
+    else
+      Math.log(1.0 + Math.exp(-z))
+  }
+
+  override def 
