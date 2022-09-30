@@ -97,4 +97,11 @@ class L2HingeLoss(l: Double) extends L2Loss {
       0.0
   }
 
-  override def predict(w: Vector, x: V
+  override def predict(w: Vector, x: Vector): Double = Maths.dot(w, x)
+}
+
+class L2LogLoss(l: Double) extends L2Loss {
+  override protected var lambda: Double = l
+
+  override def loss(pre: Double, y: Double): Double = {
+  
