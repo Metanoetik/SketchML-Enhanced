@@ -59,3 +59,37 @@ object ValidationUtil {
         if (pre > 0) truePos += 1
         else trueNeg += 1
       } else if (pre * ins.label < 0) {
+        if (pre > 0) falsePos += 1
+        else falseNeg += 1
+      }
+      scoresArray(i) = pre
+      labelsArray(i) = ins.label
+      validLoss += loss.loss(pre, ins.label)
+    }
+
+    Sort.quickSort(scoresArray, labelsArray, 0, scoresArray.length)
+    var M = 0L
+    var N = 0L
+    for (i <- 0 until validNum) {
+      if (labelsArray(i) == 1)
+        M += 1
+      else
+        N += 1
+    }
+    var sigma = 0.0
+    for (i <- M + N - 1 to 0 by -1) {
+      if (labelsArray(i.toInt) == 1.0)
+        sigma += i
+    }
+    val aucResult = (sigma - (M + 1) * M / 2) / M / N
+
+    val precision = 1.0 * (truePos + trueNeg) / validNum
+    val trueRecall = 1.0 * truePos / (truePos + falseNeg)
+    val falseRecall = 1.0 * trueNeg / (trueNeg + falsePos)
+
+    logger.info(s"validation cost ${System.currentTimeMillis() - validStart} ms, "
+      + s"loss=$validLoss, auc=$aucResult, precision=$precision, "
+      + s"trueRecall=$trueRecall, falseRecall=$falseRecall")
+    (validLoss, truePos, trueNeg, falsePos, falseNeg, validNum)
+  }
+}
