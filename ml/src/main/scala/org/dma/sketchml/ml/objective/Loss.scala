@@ -88,3 +88,13 @@ class L2HingeLoss(l: Double) extends L2Loss {
       1.0 - z
     else
       0.0
+  }
+
+  override def grad(pre: Double, y: Double): Double = {
+    if (pre * y <= 1.0)
+      y
+    else
+      0.0
+  }
+
+  override def predict(w: Vector, x: V
