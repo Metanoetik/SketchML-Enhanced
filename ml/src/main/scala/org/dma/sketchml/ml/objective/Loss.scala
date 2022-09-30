@@ -129,4 +129,9 @@ class L2LogLoss(l: Double) extends L2Loss {
 class L2SquareLoss(l: Double) extends L2Loss {
   override protected var lambda: Double = l
 
-  override def loss(pre: Double, y: Double): Dou
+  override def loss(pre: Double, y: Double): Double = 0.5 * (pre - y) * (pre - y)
+
+  override def grad(pre: Double, y: Double): Double = y - pre
+
+  override def predict(w: Vector, x: Vector): Double = Maths.dot(w, x)
+}
