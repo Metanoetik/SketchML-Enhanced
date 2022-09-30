@@ -79,4 +79,12 @@ class L1LogLoss(l: Double) extends L1Loss {
   override def predict(w: Vector, x: Vector): Double = Maths.dot(w, x)
 }
 
-class L2HingeLoss(l: Double) extends 
+class L2HingeLoss(l: Double) extends L2Loss {
+  override protected var lambda: Double = l
+
+  override def loss(pre: Double, y: Double): Double = {
+    val z = pre * y
+    if (z < 1.0)
+      1.0 - z
+    else
+      0.0
