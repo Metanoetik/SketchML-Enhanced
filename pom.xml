@@ -10,4 +10,10 @@
     <version>1.0.0</version>
     <modules>
         <module>sketch</module>
-   
+        <module>ml</module>
+    </modules>
+
+    <properties>
+        <jdkVersion>1.8</jdkVersion>
+        <scalaVersion>2.11.7</scalaVersion>
+    
