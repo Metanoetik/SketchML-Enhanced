@@ -16,4 +16,10 @@
     <properties>
         <jdkVersion>1.8</jdkVersion>
         <scalaVersion>2.11.7</scalaVersion>
-    
+        <slf4jVersion>1.7.25</slf4jVersion>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifact
