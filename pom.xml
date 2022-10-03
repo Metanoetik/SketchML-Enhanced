@@ -28,4 +28,8 @@
     </dependencies>
 
     <build>
-        <sourceDirectory>src/main
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <testSourceDirectory>src/test/java</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.
