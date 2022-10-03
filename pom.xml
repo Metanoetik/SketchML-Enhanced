@@ -22,4 +22,10 @@
     <dependencies>
         <dependency>
             <groupId>org.slf4j</groupId>
-            <artifact
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4jVersion}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main
