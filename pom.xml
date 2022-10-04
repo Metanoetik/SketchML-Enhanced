@@ -36,4 +36,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.3</version>
                 <configuration>
-        
+                    <source>${jdkVersion}</source>
+                    <target>${jdkVersion}</target>
+                    <useIncrementalCompilation>false</useIncremental
