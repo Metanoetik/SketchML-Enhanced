@@ -48,4 +48,8 @@
                     </descriptorRefs>
                 </configuration>
                 <executions>
-      
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                  
