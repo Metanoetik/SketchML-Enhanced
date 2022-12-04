@@ -9,4 +9,13 @@ public abstract class Int2IntHash implements Serializable {
         this.size = size;
     }
 
-    public abstract int 
+    public abstract int hash(int key);
+
+    public abstract Int2IntHash clone();
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this
