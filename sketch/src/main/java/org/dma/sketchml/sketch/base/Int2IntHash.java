@@ -18,4 +18,6 @@ public abstract class Int2IntHash implements Serializable {
     }
 
     public void setSize(int size) {
-        this
+        this.size = size;
+    }
+}
