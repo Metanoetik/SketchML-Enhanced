@@ -57,4 +57,7 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugi
+        </plugins>
+    </build>
+
+</project>
