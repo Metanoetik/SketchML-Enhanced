@@ -12,4 +12,13 @@ public abstract class QuantileSketch implements Serializable {
     protected double maxValue;
 
     public QuantileSketch(long estimateN) {
-        this.estimateN = estima
+        this.estimateN = estimateN > 0 ? estimateN : -1L;
+    }
+
+    public QuantileSketch() {
+        this(-1L);
+    }
+
+    public abstract void reset();
+
+    public abstract void update(double valu
