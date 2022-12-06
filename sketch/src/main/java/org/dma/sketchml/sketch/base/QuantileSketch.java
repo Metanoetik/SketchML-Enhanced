@@ -21,4 +21,10 @@ public abstract class QuantileSketch implements Serializable {
 
     public abstract void reset();
 
-    public abstract void update(double valu
+    public abstract void update(double value);
+
+    public abstract void merge(QuantileSketch other);
+
+    public abstract double getQuantile(double fraction);
+
+    public abstract double[] getQuantiles(double[
