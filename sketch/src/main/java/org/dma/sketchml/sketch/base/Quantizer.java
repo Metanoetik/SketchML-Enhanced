@@ -26,4 +26,12 @@ public abstract class Quantizer implements Serializable {
     protected double max;
 
     protected int[] bins;
-    public static final int DEFAULT_BIN_NUM = 25
+    public static final int DEFAULT_BIN_NUM = 256;
+
+    public Quantizer(int binNum) {
+        this.binNum = binNum;
+    }
+
+    public abstract void quantize(double[] values);
+
+    public abstract vo
