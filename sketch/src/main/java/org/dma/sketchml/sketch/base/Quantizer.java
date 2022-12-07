@@ -21,4 +21,9 @@ public abstract class Quantizer implements Serializable {
     protected int binNum;
     protected int n;
     protected double[] splits;
- 
+    protected int zeroIdx;
+    protected double min;
+    protected double max;
+
+    protected int[] bins;
+    public static final int DEFAULT_BIN_NUM = 25
