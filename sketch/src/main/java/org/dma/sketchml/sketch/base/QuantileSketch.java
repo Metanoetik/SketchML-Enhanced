@@ -36,4 +36,13 @@ public abstract class QuantileSketch implements Serializable {
     }
 
     public long getN() {
-      
+        return n;
+    }
+
+    public long getEstimateN() {
+        return estimateN;
+    }
+
+    public double getMinValue() {
+        return minValue;
+   
