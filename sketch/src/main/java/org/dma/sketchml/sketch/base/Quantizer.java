@@ -15,4 +15,10 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-public abstract class Quantizer imple
+public abstract class Quantizer implements Serializable {
+    public static Logger LOG = LoggerFactory.getLogger(Quantizer.class);
+
+    protected int binNum;
+    protected int n;
+    protected double[] splits;
+ 
