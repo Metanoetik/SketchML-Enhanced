@@ -27,4 +27,13 @@ public abstract class QuantileSketch implements Serializable {
 
     public abstract double getQuantile(double fraction);
 
-    public abstract double[] getQuantiles(double[
+    public abstract double[] getQuantiles(double[] fractions);
+
+    public abstract double[] getQuantiles(int evenPartition);
+
+    public boolean isEmpty() {
+        return n == 0;
+    }
+
+    public long getN() {
+      
