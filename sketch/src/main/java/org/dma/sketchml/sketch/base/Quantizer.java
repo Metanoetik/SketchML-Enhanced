@@ -34,4 +34,7 @@ public abstract class Quantizer implements Serializable {
 
     public abstract void quantize(double[] values);
 
-    public abstract vo
+    public abstract void parallelQuantize(double[] values) throws InterruptedException, ExecutionException;
+
+    public double[] getValues() {
+        double[] res = new double
