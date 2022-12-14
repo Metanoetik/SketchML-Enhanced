@@ -41,4 +41,10 @@ public abstract class Quantizer implements Serializable {
         int splitNum = binNum - 1;
         res[0] = 0.5 * (min + splits[0]);
         for (int i = 1; i < splitNum; i++)
-            res[i] = 0.5 * (splits[i - 
+            res[i] = 0.5 * (splits[i - 1] + splits[i]);
+        res[splitNum] = 0.5 * (splits[splitNum - 1] + max);
+        return res;
+    }
+
+    public int indexOf(double x) {
+        if (x < split
