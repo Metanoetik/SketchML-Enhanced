@@ -47,4 +47,9 @@ public abstract class Quantizer implements Serializable {
     }
 
     public int indexOf(double x) {
-        if (x < split
+        if (x < splits[0]) {
+            return 0;
+        } else if (x >= splits[binNum - 2]) {
+            return binNum - 1;
+        } else {
+            int l = zeroIdx, r = zeroI
