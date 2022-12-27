@@ -62,4 +62,9 @@ public abstract class Quantizer implements Serializable {
                         return mid;
                     else
                         r = mid;
-  
+                } else {
+                    l = mid;
+                }
+            }
+            int mid = (l + r) >> 1;
+            return splits[mid] <= x ? mi
