@@ -57,4 +57,9 @@ public abstract class Quantizer implements Serializable {
             else r = binNum - 2;
             while (l + 1 < r) {
                 int mid = (l + r) >> 1;
-              
+                if (splits[mid] > x) {
+                    if (mid == 0 || splits[mid - 1] <= x)
+                        return mid;
+                    else
+                        r = mid;
+  
