@@ -67,4 +67,12 @@ public abstract class Quantizer implements Serializable {
                 }
             }
             int mid = (l + r) >> 1;
-            return splits[mid] <= x ? mi
+            return splits[mid] <= x ? mid + 1 : mid;
+        }
+    }
+
+    protected void findZeroIdx() {
+        if (min > 0.0)
+            zeroIdx = 0;
+        else if (max < 0.0)
+            zeroI
