@@ -75,4 +75,9 @@ public abstract class Quantizer implements Serializable {
         if (min > 0.0)
             zeroIdx = 0;
         else if (max < 0.0)
-            zeroI
+            zeroIdx = binNum - 1;
+        else {
+            int t = 0;
+            while (t < binNum - 1 && splits[t] < 0.0)
+                t++;
+            zeroIdx 
