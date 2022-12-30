@@ -88,3 +88,8 @@ public abstract class Quantizer implements Serializable {
         int size = values.length;
         bins = new int[size];
         for (int i = 0; i < size; i++)
+            bins[i] = indexOf(values[i]);
+    }
+
+    protected void parallelQuantizeToBins(double[] values) throws InterruptedException, ExecutionException {
+        int s
