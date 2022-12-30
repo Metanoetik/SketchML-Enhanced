@@ -80,4 +80,11 @@ public abstract class Quantizer implements Serializable {
             int t = 0;
             while (t < binNum - 1 && splits[t] < 0.0)
                 t++;
-            zeroIdx 
+            zeroIdx = t;
+        }
+    }
+
+    protected void quantizeToBins(double[] values) {
+        int size = values.length;
+        bins = new int[size];
+        for (int i = 0; i < size; i++)
