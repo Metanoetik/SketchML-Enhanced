@@ -95,4 +95,8 @@ public abstract class Quantizer implements Serializable {
         int size = values.length;
         int threadNum = Constants.Parallel.getParallelism();
         ExecutorService threadPool = Constants.Parallel.getThreadPool();
-    
+        Future<Void>[] futures = new Future[threadNum];
+        bins = new int[size];
+        for (int i = 0; i < threadNum; i++) {
+            int threadId = i;
+   
