@@ -123,4 +123,8 @@ public abstract class Quantizer implements Serializable {
             splits[i] *= x;
     }
 
-    public static Quantizer 
+    public static Quantizer newQuantizer(Quantizer.QuantizationType type, int binNum) {
+        switch (type) {
+            case QUANTILE:
+                return new QuantileQuantizer(binNum);
+    
