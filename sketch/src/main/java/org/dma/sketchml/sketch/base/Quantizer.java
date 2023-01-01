@@ -116,4 +116,11 @@ public abstract class Quantizer implements Serializable {
         }
     }
 
-    public void
+    public void timesBy(double x) {
+        min *= x;
+        max *= x;
+        for (int i = 0; i < splits.length; i++)
+            splits[i] *= x;
+    }
+
+    public static Quantizer 
