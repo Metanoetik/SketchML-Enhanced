@@ -102,4 +102,6 @@ public abstract class Quantizer implements Serializable {
             futures[threadId] = threadPool.submit(new Callable<Void>() {
                 @Override
                 public Void call() throws Exception {
-                    int ele
+                    int elementPerThread = n / threadNum;
+                    int from = threadId * elementPerThread;
+                    int to = threadId + 1 == threadNum ? size : from 
