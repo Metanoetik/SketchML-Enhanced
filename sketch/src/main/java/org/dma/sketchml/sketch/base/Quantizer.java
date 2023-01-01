@@ -92,4 +92,7 @@ public abstract class Quantizer implements Serializable {
     }
 
     protected void parallelQuantizeToBins(double[] values) throws InterruptedException, ExecutionException {
-        int s
+        int size = values.length;
+        int threadNum = Constants.Parallel.getParallelism();
+        ExecutorService threadPool = Constants.Parallel.getThreadPool();
+    
