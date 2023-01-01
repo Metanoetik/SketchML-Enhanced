@@ -107,4 +107,13 @@ public abstract class Quantizer implements Serializable {
                     int to = threadId + 1 == threadNum ? size : from + elementPerThread;
                     for (int itemId = from; itemId < to; itemId++)
                         bins[itemId] = indexOf(values[itemId]);
-               
+                    return null;
+                }
+            });
+        }
+        for (int i = 0; i < threadNum; i++) {
+            futures[i].get();
+        }
+    }
+
+    public void
