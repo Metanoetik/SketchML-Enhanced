@@ -99,4 +99,7 @@ public abstract class Quantizer implements Serializable {
         bins = new int[size];
         for (int i = 0; i < threadNum; i++) {
             int threadId = i;
-   
+            futures[threadId] = threadPool.submit(new Callable<Void>() {
+                @Override
+                public Void call() throws Exception {
+                    int ele
