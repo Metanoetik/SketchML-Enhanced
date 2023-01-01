@@ -127,4 +127,8 @@ public abstract class Quantizer implements Serializable {
         switch (type) {
             case QUANTILE:
                 return new QuantileQuantizer(binNum);
-    
+            case UNIFORM:
+                return new UniformQuantizer(binNum);
+            default:
+                throw new SketchMLException(
+                        "Unreco
