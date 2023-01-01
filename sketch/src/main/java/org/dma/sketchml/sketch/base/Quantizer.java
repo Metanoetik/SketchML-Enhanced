@@ -104,4 +104,7 @@ public abstract class Quantizer implements Serializable {
                 public Void call() throws Exception {
                     int elementPerThread = n / threadNum;
                     int from = threadId * elementPerThread;
-                    int to = threadId + 1 == threadNum ? size : from 
+                    int to = threadId + 1 == threadNum ? size : from + elementPerThread;
+                    for (int itemId = from; itemId < to; itemId++)
+                        bins[itemId] = indexOf(values[itemId]);
+               
