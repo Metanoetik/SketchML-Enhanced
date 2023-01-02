@@ -131,4 +131,12 @@ public abstract class Quantizer implements Serializable {
                 return new UniformQuantizer(binNum);
             default:
                 throw new SketchMLException(
-                        "Unreco
+                        "Unrecognizable quantization type: " + type);
+        }
+    }
+
+    public enum QuantizationType {
+        UNIFORM("UNIFORM"),
+        QUANTILE("QUANTILE");
+
+        pri
