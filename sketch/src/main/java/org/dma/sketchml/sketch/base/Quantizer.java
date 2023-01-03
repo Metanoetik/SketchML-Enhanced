@@ -147,4 +147,15 @@ public abstract class Quantizer implements Serializable {
 
         @Override
         public String toString() {
-         
+            return type;
+        }
+    }
+
+    public abstract QuantizationType quantizationType();
+
+    public int getBinNum() {
+        return binNum;
+    }
+
+    public int getN() {
+  
