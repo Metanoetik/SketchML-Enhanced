@@ -169,4 +169,13 @@ public abstract class Quantizer implements Serializable {
         return bins;
     }
 
-    publi
+    public int getZeroIdx() {
+        return zeroIdx;
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public double getMin() {
+        return
