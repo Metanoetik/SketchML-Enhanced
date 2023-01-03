@@ -178,4 +178,10 @@ public abstract class Quantizer implements Serializable {
     }
 
     public double getMin() {
-        return
+        return min;
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.writeInt(binNum);
+        oos.writeInt(n);
+        for (doub
