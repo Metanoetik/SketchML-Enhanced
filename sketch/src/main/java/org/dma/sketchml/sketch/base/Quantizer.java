@@ -189,4 +189,8 @@ public abstract class Quantizer implements Serializable {
         oos.writeInt(zeroIdx);
         oos.writeDouble(min);
         oos.writeDouble(max);
-        oos.writeInt(bins.
+        oos.writeInt(bins.length);
+        if (binNum <= 256) {
+            for (int bin : bins)
+                oos.writeByte(bin + Byte.MIN_VALUE);
+        } else if (binNum <= 
