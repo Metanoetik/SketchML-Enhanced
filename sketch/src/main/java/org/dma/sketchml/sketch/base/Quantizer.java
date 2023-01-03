@@ -139,4 +139,12 @@ public abstract class Quantizer implements Serializable {
         UNIFORM("UNIFORM"),
         QUANTILE("QUANTILE");
 
-        pri
+        private final String type;
+
+        QuantizationType(String type) {
+            this.type = type;
+        }
+
+        @Override
+        public String toString() {
+         
