@@ -184,4 +184,9 @@ public abstract class Quantizer implements Serializable {
     private void writeObject(ObjectOutputStream oos) throws IOException {
         oos.writeInt(binNum);
         oos.writeInt(n);
-        for (doub
+        for (double split : splits)
+            oos.writeDouble(split);
+        oos.writeInt(zeroIdx);
+        oos.writeDouble(min);
+        oos.writeDouble(max);
+        oos.writeInt(bins.
