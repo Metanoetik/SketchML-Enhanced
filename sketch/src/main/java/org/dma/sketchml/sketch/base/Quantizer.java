@@ -158,4 +158,15 @@ public abstract class Quantizer implements Serializable {
     }
 
     public int getN() {
-  
+        return n;
+    }
+
+    public double[] getSplits() {
+        return splits;
+    }
+
+    public int[] getBins() {
+        return bins;
+    }
+
+    publi
