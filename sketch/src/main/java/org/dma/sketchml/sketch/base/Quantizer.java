@@ -200,4 +200,8 @@ public abstract class Quantizer implements Serializable {
             for (int bin : bins)
                 oos.writeInt(bin);
         }
- 
+    }
+
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        binNum = ois.readInt();
+        n = ois.readInt();
