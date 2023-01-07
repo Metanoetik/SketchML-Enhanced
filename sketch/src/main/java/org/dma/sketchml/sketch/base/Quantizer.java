@@ -205,3 +205,8 @@ public abstract class Quantizer implements Serializable {
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
         binNum = ois.readInt();
         n = ois.readInt();
+        int splitNum = binNum - 1;
+        splits = new double[splitNum];
+        for (int i = 0; i < splitNum; i++)
+            splits[i] = ois.readDouble();
+        zeroIdx = ois
