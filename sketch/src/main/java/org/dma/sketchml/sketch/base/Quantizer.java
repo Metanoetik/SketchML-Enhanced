@@ -209,4 +209,9 @@ public abstract class Quantizer implements Serializable {
         splits = new double[splitNum];
         for (int i = 0; i < splitNum; i++)
             splits[i] = ois.readDouble();
-        zeroIdx = ois
+        zeroIdx = ois.readInt();
+        min = ois.readDouble();
+        max = ois.readDouble();
+        bins = new int[ois.readInt()];
+        if (binNum <= 256) {
+      
