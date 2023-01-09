@@ -217,4 +217,7 @@ public abstract class Quantizer implements Serializable {
             for (int i = 0; i < bins.length; i++)
                 bins[i] = ((int) ois.readByte()) - Byte.MIN_VALUE;
         } else if (binNum <= 65536) {
-  
+            for (int i = 0; i < bins.length; i++)
+                bins[i] = ((int) ois.readShort()) - Short.MIN_VALUE;
+        } else {
+            for (int i = 0
