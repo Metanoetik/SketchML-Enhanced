@@ -8,4 +8,11 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import j
+import java.util.BitSet;
+
+/**
+ * This is the special case for DeltaAdaptiveEncoder
+ * where numIntervals equals to 4 and number of flag bits is constant
+ *
+ * */
+public class 
