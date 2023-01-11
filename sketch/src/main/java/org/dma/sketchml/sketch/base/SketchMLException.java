@@ -8,3 +8,8 @@ public class SketchMLException extends RuntimeException {
     public SketchMLException(Throwable cause) {
         super(cause);
     }
+
+    public SketchMLException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
