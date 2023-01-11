@@ -176,3 +176,15 @@ public class DeltaAdaptiveEncoder implements BinaryEncoder {
         flagKind = ois.readBoolean();
         int flagsLength = ois.readInt();
         long[] flags = new long[flagsLength];
+        for (int i = 0; i < flagsLength; i++) {
+            flags[i] = ois.readLong();
+        }
+        flagBits = BitSet.valueOf(flags);
+        int deltaLength = ois.readInt();
+        long[] delta = new long[deltaLength];
+        for (int i = 0; i < deltaLength; i++) {
+            delta[i] = ois.readLong();
+        }
+        deltaBits = BitSet.valueOf(delta);
+    }
+}
