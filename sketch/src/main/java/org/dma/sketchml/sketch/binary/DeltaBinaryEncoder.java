@@ -15,4 +15,8 @@ import java.util.BitSet;
  * where numIntervals equals to 4 and number of flag bits is constant
  *
  * */
-public class 
+public class DeltaBinaryEncoder implements BinaryEncoder {
+    private static final Logger LOG = LoggerFactory.getLogger(DeltaBinaryEncoder.class);
+
+    private int size;
+    private BitSe
