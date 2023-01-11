@@ -19,4 +19,10 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
     private static final Logger LOG = LoggerFactory.getLogger(DeltaBinaryEncoder.class);
 
     private int size;
-    private BitSe
+    private BitSet deltaBits;
+    private BitSet flagBits;
+
+    @Override
+    public void encode(int[] values) {
+        size = values.length;
+        flagBits = new BitSet(size * 2);
