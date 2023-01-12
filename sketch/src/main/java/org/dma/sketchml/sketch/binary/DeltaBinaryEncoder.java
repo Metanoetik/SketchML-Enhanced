@@ -32,4 +32,11 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
             int delta = values[i] - prev;
             int bytesNeeded = needBytes(delta);
             BinaryUtils.setBits(flagBits, 2 * i, bytesNeeded - 1, 2);
-            BinaryUtils.setBytes(deltaBits, of
+            BinaryUtils.setBytes(deltaBits, offset, delta, bytesNeeded);
+            prev = values[i];
+            offset += bytesNeeded * 8;
+        }
+    }
+
+    @Override
+    public int[] d
