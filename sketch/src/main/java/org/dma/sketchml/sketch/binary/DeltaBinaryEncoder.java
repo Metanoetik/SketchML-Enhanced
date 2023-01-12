@@ -26,3 +26,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
     public void encode(int[] values) {
         size = values.length;
         flagBits = new BitSet(size * 2);
+        deltaBits = new BitSet(size * 12);
+        int offset = 0, prev = 0;
+        for (int i = 0; i < size; i++) {
+            int delta = values[i] - prev;
+      
