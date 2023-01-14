@@ -39,4 +39,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
     }
 
     @Override
-    public int[] d
+    public int[] decode() {
+        int[] res = new int[size];
+        int offset = 0, prev = 0;
+        for (int i = 0; i < size; i++) {
+            int bytesNeeded = BinaryUtils.getBits(flagBits, 
