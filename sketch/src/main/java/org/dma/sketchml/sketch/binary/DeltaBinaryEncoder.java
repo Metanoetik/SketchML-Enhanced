@@ -70,4 +70,10 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
             oos.writeInt(0);
         } else {
             long[] flags = flagBits.toLongArray();
-            oos.wri
+            oos.writeInt(flags.length);
+            for (long l : flags) {
+                oos.writeLong(l);
+            }
+        }
+        if (deltaBits == null) {
+          
