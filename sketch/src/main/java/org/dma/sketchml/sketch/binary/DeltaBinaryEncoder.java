@@ -65,4 +65,9 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
     }
 
     private void writeObject(ObjectOutputStream oos) throws IOException {
-        oos.writeIn
+        oos.writeInt(size);
+        if (flagBits == null) {
+            oos.writeInt(0);
+        } else {
+            long[] flags = flagBits.toLongArray();
+            oos.wri
