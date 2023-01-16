@@ -54,4 +54,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
 
     public static int needBytes(int x) {
         if (x < 0) {
-     
+            throw new SketchMLException("Input of DeltaBinaryEncoder should be sorted");
+        } else if (x < 256) {
+            return 1;
+        } else if (x < 65536) {
+            retu
