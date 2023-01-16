@@ -76,4 +76,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
             }
         }
         if (deltaBits == null) {
-          
+            oos.writeInt(0);
+        } else {
+            long[] delta = deltaBits.toLongArray();
+            oos.writeInt(delta.length);
+            for (long l : delta) 
