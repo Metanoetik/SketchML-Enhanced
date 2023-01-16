@@ -58,4 +58,11 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
         } else if (x < 256) {
             return 1;
         } else if (x < 65536) {
-            retu
+            return 2;
+        } else {
+            return 4;
+        }
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.writeIn
