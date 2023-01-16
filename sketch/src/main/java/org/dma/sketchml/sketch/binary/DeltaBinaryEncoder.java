@@ -43,4 +43,7 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
         int[] res = new int[size];
         int offset = 0, prev = 0;
         for (int i = 0; i < size; i++) {
-            int bytesNeeded = BinaryUtils.getBits(flagBits, 
+            int bytesNeeded = BinaryUtils.getBits(flagBits, i * 2, 2) + 1;
+            int delta = BinaryUtils.getBytes(deltaBits, offset, bytesNeeded);
+            res[i] = prev + delta;
+            prev = res[i]
