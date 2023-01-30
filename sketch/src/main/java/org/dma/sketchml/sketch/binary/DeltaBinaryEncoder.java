@@ -86,4 +86,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
         }
     }
 
-    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOEx
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        size = ois.readInt();
+        int flagsLength = ois.readInt();
+        long[] flags = new long[flagsLength];
+        for (int i = 0; i <
