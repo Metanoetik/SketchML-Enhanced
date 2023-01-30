@@ -80,4 +80,10 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
         } else {
             long[] delta = deltaBits.toLongArray();
             oos.writeInt(delta.length);
-            for (long l : delta) 
+            for (long l : delta) {
+                oos.writeLong(l);
+            }
+        }
+    }
+
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOEx
