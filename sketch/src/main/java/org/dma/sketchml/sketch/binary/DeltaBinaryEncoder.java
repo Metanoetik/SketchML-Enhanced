@@ -95,4 +95,8 @@ public class DeltaBinaryEncoder implements BinaryEncoder {
         }
         flagBits = BitSet.valueOf(flags);
         int deltaLength = ois.readInt();
-        long[]
+        long[] delta = new long[deltaLength];
+        for (int i = 0; i < deltaLength; i++) {
+            delta[i] = ois.readLong();
+        }
+        deltaBits = BitSet.valueOf(delta);
