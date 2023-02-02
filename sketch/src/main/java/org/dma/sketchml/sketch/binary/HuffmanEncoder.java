@@ -8,4 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectO
+import java.io.ObjectOutputStream;
+import java.util.*;
+import java.util.stream.IntStream;
+
+public class HuffmanEncoder implements BinaryEncoder {
+    private static fina
