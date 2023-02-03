@@ -31,4 +31,13 @@ public class HuffmanEncoder implements BinaryEncoder {
             this.value = value;
             this.occurrence = occurrence;
             this.leftChild = leftChild;
-            this.rightChil
+            this.rightChild = rightChild;
+            this.isLeaf = isLeaf;
+        }
+
+        Node(int value, int occurrence) {
+            this(value, occurrence, null, null, false);
+        }
+
+        Node() {
+     
