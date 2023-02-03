@@ -20,4 +20,11 @@ public class HuffmanEncoder implements BinaryEncoder {
     private int size;
 
 
-    private class
+    private class Node {
+        int value;
+        int occurrence;
+        Node leftChild;
+        Node rightChild;
+        boolean isLeaf;
+
+        Node(int value, int occurrence, No
