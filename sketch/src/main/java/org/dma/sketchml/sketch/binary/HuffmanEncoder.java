@@ -13,4 +13,11 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class HuffmanEncoder implements BinaryEncoder {
-    private static fina
+    private static final Logger LOG = LoggerFactory.getLogger(HuffmanEncoder.class);
+
+    private Item[] items;
+    private BitSet bitset;
+    private int size;
+
+
+    private class
