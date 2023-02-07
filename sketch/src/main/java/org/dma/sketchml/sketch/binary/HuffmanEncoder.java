@@ -69,4 +69,10 @@ public class HuffmanEncoder implements BinaryEncoder {
             sb.append("(");
             sb.append(value);
             sb.append(" --> ");
-            sb.append
+            sb.append(BinaryUtils.bits2String(bits, numBits));
+            sb.append(")");
+            return sb.toString();
+        }
+    }
+
+    private void traverse(Node node, In
