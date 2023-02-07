@@ -77,4 +77,7 @@ public class HuffmanEncoder implements BinaryEncoder {
 
     private void traverse(Node node, Int2ObjectMap<Item> mapping, int bits, int depth) {
         if (node.isLeaf) {
-            mapping.put(node.value, new Item(node.value, bits, depth == 0 ? 1
+            mapping.put(node.value, new Item(node.value, bits, depth == 0 ? 1 : depth));
+        } else {
+            traverse(node.leftChild, mapping, bits << 1, depth + 1);
+            traverse(node.rightChild, mapping, (bits << 1) | 1, depth + 1
