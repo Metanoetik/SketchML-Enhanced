@@ -57,4 +57,11 @@ public class HuffmanEncoder implements BinaryEncoder {
         int bits;
         int numBits;
 
-        Item(int value,
+        Item(int value, int bits, int numBits) {
+            this.value = value;
+            this.bits = bits;
+            this.numBits = numBits;
+        }
+
+        @Override
+        public String toString() 
