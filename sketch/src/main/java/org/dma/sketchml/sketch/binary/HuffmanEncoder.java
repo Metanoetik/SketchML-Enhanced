@@ -40,4 +40,12 @@ public class HuffmanEncoder implements BinaryEncoder {
         }
 
         Node() {
-     
+            this(-1, -1, null, null, false);
+        }
+
+        int getValue() {
+            return value;
+        }
+
+        int getOccurrence() {
+       
