@@ -48,4 +48,13 @@ public class HuffmanEncoder implements BinaryEncoder {
         }
 
         int getOccurrence() {
-       
+            return occurrence;
+        }
+    }
+
+    private class Item {
+        int value;
+        int bits;
+        int numBits;
+
+        Item(int value,
