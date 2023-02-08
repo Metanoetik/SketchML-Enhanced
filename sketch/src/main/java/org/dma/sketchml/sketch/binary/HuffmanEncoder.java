@@ -80,4 +80,12 @@ public class HuffmanEncoder implements BinaryEncoder {
             mapping.put(node.value, new Item(node.value, bits, depth == 0 ? 1 : depth));
         } else {
             traverse(node.leftChild, mapping, bits << 1, depth + 1);
-            traverse(node.rightChild, mapping, (bits << 1) | 1, depth + 1
+            traverse(node.rightChild, mapping, (bits << 1) | 1, depth + 1);
+        }
+    }
+
+    @Override
+    public void encode(int[] values) {
+        long startTime = System.currentTimeMillis();
+        // 1. count occurrences
+        Int2Obje
