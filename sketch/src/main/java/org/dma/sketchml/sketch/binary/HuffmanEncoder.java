@@ -88,4 +88,8 @@ public class HuffmanEncoder implements BinaryEncoder {
     public void encode(int[] values) {
         long startTime = System.currentTimeMillis();
         // 1. count occurrences
-        Int2Obje
+        Int2ObjectRBTreeMap<Node> freq = new Int2ObjectRBTreeMap<>();
+        for (int v : values) {
+            Node node = freq.get(v);
+            if (node != null)
+     
