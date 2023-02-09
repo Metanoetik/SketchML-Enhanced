@@ -97,4 +97,8 @@ public class HuffmanEncoder implements BinaryEncoder {
                 freq.put(v, new Node(v, 1, null, null, true));
         }
         // 2. build tree
-        PriorityQueue<No
+        PriorityQueue<Node> heap = new PriorityQueue<>(freq.size(),
+                Comparator.comparing(Node::getOccurrence));
+        heap.addAll(freq.values());
+        while (heap.size() > 1) {
+        
