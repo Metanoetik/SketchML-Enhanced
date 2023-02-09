@@ -101,4 +101,7 @@ public class HuffmanEncoder implements BinaryEncoder {
                 Comparator.comparing(Node::getOccurrence));
         heap.addAll(freq.values());
         while (heap.size() > 1) {
-        
+            Node x = heap.poll();
+            Node y = heap.poll();
+            Node p = new Node(-1, x.occurrence + y.occurrence, x, y, false);
+            heap.add
