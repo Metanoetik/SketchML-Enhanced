@@ -92,4 +92,9 @@ public class HuffmanEncoder implements BinaryEncoder {
         for (int v : values) {
             Node node = freq.get(v);
             if (node != null)
-     
+                node.occurrence++;
+            else
+                freq.put(v, new Node(v, 1, null, null, true));
+        }
+        // 2. build tree
+        PriorityQueue<No
