@@ -114,4 +114,7 @@ public class HuffmanEncoder implements BinaryEncoder {
         bitset = new BitSet();
         int offset = 0;
         for (int v : values) {
-      
+            Item item = mapping.get(v);
+            BinaryUtils.setBits(bitset, offset, item.bits, item.numBits);
+            offset += item.numBits;
+  
