@@ -109,3 +109,9 @@ public class HuffmanEncoder implements BinaryEncoder {
         Int2ObjectMap<Item> mapping = new Int2ObjectRBTreeMap<>();
         traverse(heap.peek(), mapping, 0, 0);
         items = new Item[mapping.size()];
+        mapping.values().toArray(items);
+        // 3. encode values
+        bitset = new BitSet();
+        int offset = 0;
+        for (int v : values) {
+      
