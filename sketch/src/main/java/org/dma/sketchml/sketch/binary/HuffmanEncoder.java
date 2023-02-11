@@ -104,4 +104,8 @@ public class HuffmanEncoder implements BinaryEncoder {
             Node x = heap.poll();
             Node y = heap.poll();
             Node p = new Node(-1, x.occurrence + y.occurrence, x, y, false);
-            heap.add
+            heap.add(p);
+        }
+        Int2ObjectMap<Item> mapping = new Int2ObjectRBTreeMap<>();
+        traverse(heap.peek(), mapping, 0, 0);
+        items = new Item[mapping.size()];
