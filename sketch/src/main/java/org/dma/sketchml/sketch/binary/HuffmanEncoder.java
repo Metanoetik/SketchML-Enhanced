@@ -138,4 +138,8 @@ public class HuffmanEncoder implements BinaryEncoder {
                 int t = bits - (1 << i);
                 if (t >= 0) {
                     if (cur.rightChild == null)
-                        cur.rightChild = ne
+                        cur.rightChild = new Node();
+                    cur = cur.rightChild;
+                    bits = t;
+                } else {
+                    if (cur.leftChild ==
