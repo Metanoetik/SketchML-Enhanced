@@ -134,4 +134,8 @@ public class HuffmanEncoder implements BinaryEncoder {
             int bits = item.bits;
             int numBits = item.numBits;
             Node cur = root;
-            for (int i = nu
+            for (int i = numBits - 1; i >= 0; i--) {
+                int t = bits - (1 << i);
+                if (t >= 0) {
+                    if (cur.rightChild == null)
+                        cur.rightChild = ne
