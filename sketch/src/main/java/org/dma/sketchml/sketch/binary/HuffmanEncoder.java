@@ -142,4 +142,9 @@ public class HuffmanEncoder implements BinaryEncoder {
                     cur = cur.rightChild;
                     bits = t;
                 } else {
-                    if (cur.leftChild ==
+                    if (cur.leftChild == null)
+                        cur.leftChild = new Node();
+                    cur = cur.leftChild;
+                }
+            }
+            cur.value = item.value;
