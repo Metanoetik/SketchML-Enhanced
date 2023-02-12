@@ -129,4 +129,9 @@ public class HuffmanEncoder implements BinaryEncoder {
             return new int[0];
 
         // 1. build Huffman tree
-        Node root = ne
+        Node root = new Node();
+        for (Item item : items) {
+            int bits = item.bits;
+            int numBits = item.numBits;
+            Node cur = root;
+            for (int i = nu
