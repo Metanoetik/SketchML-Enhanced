@@ -117,4 +117,7 @@ public class HuffmanEncoder implements BinaryEncoder {
             Item item = mapping.get(v);
             BinaryUtils.setBits(bitset, offset, item.bits, item.numBits);
             offset += item.numBits;
-  
+        }
+        size = values.length;
+        LOG.debug(String.format("Huffman encoding for %d values cost %d ms",
+                values.length, System.currentTimeMillis() - star
