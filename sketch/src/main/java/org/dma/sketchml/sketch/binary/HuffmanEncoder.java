@@ -148,3 +148,10 @@ public class HuffmanEncoder implements BinaryEncoder {
                 }
             }
             cur.value = item.value;
+            cur.isLeaf = true;
+        }
+        // 2. decode bits
+        int[] res = new int[size];
+        int cnt = 0;
+        Node cur = root;
+       
