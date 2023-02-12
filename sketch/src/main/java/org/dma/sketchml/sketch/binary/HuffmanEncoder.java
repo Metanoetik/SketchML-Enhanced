@@ -120,4 +120,13 @@ public class HuffmanEncoder implements BinaryEncoder {
         }
         size = values.length;
         LOG.debug(String.format("Huffman encoding for %d values cost %d ms",
-                values.length, System.currentTimeMillis() - star
+                values.length, System.currentTimeMillis() - startTime));
+    }
+
+    @Override
+    public int[] decode() {
+        if (size == 0)
+            return new int[0];
+
+        // 1. build Huffman tree
+        Node root = ne
