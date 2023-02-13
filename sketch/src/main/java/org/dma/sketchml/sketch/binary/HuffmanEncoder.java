@@ -154,4 +154,8 @@ public class HuffmanEncoder implements BinaryEncoder {
         int[] res = new int[size];
         int cnt = 0;
         Node cur = root;
-       
+        int idx = 0;
+        while (cnt < size) {
+            cur = bitset.get(idx++) ? cur.rightChild : cur.leftChild;
+            if (cur.isLeaf) {
+                res[cnt++] = cur.v
