@@ -158,4 +158,11 @@ public class HuffmanEncoder implements BinaryEncoder {
         while (cnt < size) {
             cur = bitset.get(idx++) ? cur.rightChild : cur.leftChild;
             if (cur.isLeaf) {
-                res[cnt++] = cur.v
+                res[cnt++] = cur.value;
+                cur = root;
+            }
+        }
+        return res;
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException
