@@ -165,4 +165,10 @@ public class HuffmanEncoder implements BinaryEncoder {
         return res;
     }
 
-    private void writeObject(ObjectOutputStream oos) throws IOException
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        // items
+        if (items == null) {
+            oos.writeInt(0);
+        } else {
+            oos.writeInt(items.length);
+            for (
