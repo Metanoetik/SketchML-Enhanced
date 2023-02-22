@@ -171,4 +171,7 @@ public class HuffmanEncoder implements BinaryEncoder {
             oos.writeInt(0);
         } else {
             oos.writeInt(items.length);
-            for (
+            for (Item item : items) {
+                oos.writeInt(item.value);
+                oos.writeInt(item.bits);
+                oos.writeInt(item
