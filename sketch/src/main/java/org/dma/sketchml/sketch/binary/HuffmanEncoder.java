@@ -181,4 +181,10 @@ public class HuffmanEncoder implements BinaryEncoder {
         if (bitset == null) {
             oos.writeInt(0);
         } else {
-            long[] bits 
+            long[] bits = bitset.toLongArray();
+            oos.writeInt(bits.length);
+            for (long l : bits)
+                oos.writeLong(l);
+        }
+        // size
+        oos.w
