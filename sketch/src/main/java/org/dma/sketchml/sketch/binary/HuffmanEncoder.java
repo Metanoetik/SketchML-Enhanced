@@ -187,4 +187,10 @@ public class HuffmanEncoder implements BinaryEncoder {
                 oos.writeLong(l);
         }
         // size
-        oos.w
+        oos.writeInt(size);
+    }
+
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        // items
+        int numItems = ois.readInt();
+        ite
