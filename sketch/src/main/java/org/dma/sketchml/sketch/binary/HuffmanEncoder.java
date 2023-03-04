@@ -193,4 +193,7 @@ public class HuffmanEncoder implements BinaryEncoder {
     private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
         // items
         int numItems = ois.readInt();
-        ite
+        items = new Item[numItems];
+        for (int i = 0; i < numItems; i++)
+            items[i] = new Item(ois.readInt(), ois.readInt(), ois.readInt());
+        // bit
