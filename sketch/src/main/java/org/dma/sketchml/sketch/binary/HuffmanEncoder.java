@@ -201,3 +201,8 @@ public class HuffmanEncoder implements BinaryEncoder {
         long[] bits = new long[numLongs];
         for (int i = 0; i < numLongs; i++)
             bits[i] = ois.readLong();
+        bitset = BitSet.valueOf(bits);
+        // size
+        size = ois.readInt();
+    }
+}
