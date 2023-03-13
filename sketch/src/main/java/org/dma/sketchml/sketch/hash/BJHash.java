@@ -13,4 +13,11 @@ public class BJHash extends Int2IntHash {
         code = (code ^ 0xc761c23c) ^ (code >> 19);
         code = (code + 0x165667b1) + (code << 5);
         code = (code + 0xd3a2646c) ^ (code << 9);
-        code = (code + 0xfd7046c5) + (co
+        code = (code + 0xfd7046c5) + (code << 3);
+        code = (code ^ 0xb55a4f09) ^ (code >> 16);
+        code %= size;
+        return code >= 0 ? code : code + size;
+    }
+
+    @Override
+    p
