@@ -20,4 +20,7 @@ public class BJHash extends Int2IntHash {
     }
 
     @Override
-    p
+    public Int2IntHash clone() {
+        return new BJHash(size);
+    }
+}
