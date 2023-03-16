@@ -7,4 +7,12 @@ public class BKDRHash extends Int2IntHash {
 
     public BKDRHash(int size, int seed) {
         super(size);
-        this.seed = seed
+        this.seed = seed;
+    }
+
+    public int hash(int key) {
+        int code = 0;
+        while (key != 0) {
+            code = seed * code + (key % 10);
+            key /= 10;
+      
