@@ -15,4 +15,12 @@ public class BKDRHash extends Int2IntHash {
         while (key != 0) {
             code = seed * code + (key % 10);
             key /= 10;
-      
+        }
+        code %= size;
+        return code >= 0 ? code : code + size;
+    }
+
+    @Override
+    public Int2IntHash clone() {
+        return new BKDRHash(size, seed);
+    
