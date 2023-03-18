@@ -23,4 +23,9 @@ public class BKDRHash extends Int2IntHash {
     @Override
     public Int2IntHash clone() {
         return new BKDRHash(size, seed);
-    
+    }
+
+    public int getSeed() {
+        return seed;
+    }
+}
