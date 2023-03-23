@@ -13,4 +13,7 @@ public class HashFactory {
             new BKDRHash(0, 267), new BKDRHash(0, 1313), new BKDRHash(0, 13131)};
     private static final Random random = new Random();
 
-    public static Int2IntHash getRandom
+    public static Int2IntHash getRandomInt2IntHash(int size) {
+        int idx = random.nextInt(int2intHashes.length);
+        Int2IntHash res = int2intHashes[idx].clone();
+        res.setSize(size);
