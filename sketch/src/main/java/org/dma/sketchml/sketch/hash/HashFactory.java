@@ -17,3 +17,9 @@ public class HashFactory {
         int idx = random.nextInt(int2intHashes.length);
         Int2IntHash res = int2intHashes[idx].clone();
         res.setSize(size);
+        return res;
+    }
+
+    public static Int2IntHash[] getRandomInt2IntHashes(int hashNum, int size) {
+        if (hashNum > int2intHashes.length) {
+     
