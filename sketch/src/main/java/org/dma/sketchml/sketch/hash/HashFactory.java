@@ -23,4 +23,8 @@ public class HashFactory {
     public static Int2IntHash[] getRandomInt2IntHashes(int hashNum, int size) {
         if (hashNum > int2intHashes.length) {
             throw new SketchMLException(String.format("Currently only %d " +
-                    "hash functions are available", int2intHashes.
+                    "hash functions are available", int2intHashes.length));
+        } else {
+            Int2IntHash[] res = new Int2IntHash[hashNum];
+            int[] indexes = new int[int2intHashes.length];
+  
