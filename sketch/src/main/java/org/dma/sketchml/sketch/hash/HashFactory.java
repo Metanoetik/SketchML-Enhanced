@@ -27,4 +27,7 @@ public class HashFactory {
         } else {
             Int2IntHash[] res = new Int2IntHash[hashNum];
             int[] indexes = new int[int2intHashes.length];
-  
+            Arrays.setAll(indexes, i -> i);
+            Maths.shuffle(indexes);
+            for (int i = 0; i < hashNum; i++) {
+                res[i] = int2int
