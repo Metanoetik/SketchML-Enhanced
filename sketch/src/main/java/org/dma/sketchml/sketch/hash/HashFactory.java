@@ -30,4 +30,10 @@ public class HashFactory {
             Arrays.setAll(indexes, i -> i);
             Maths.shuffle(indexes);
             for (int i = 0; i < hashNum; i++) {
-                res[i] = int2int
+                res[i] = int2intHashes[indexes[i]].clone();
+                res[i].setSize(size);
+            }
+            return res;
+        }
+    }
+}
