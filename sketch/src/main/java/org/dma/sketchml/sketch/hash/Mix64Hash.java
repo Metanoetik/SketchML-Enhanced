@@ -11,4 +11,6 @@ public class Mix64Hash extends Int2IntHash {
         int code = key;
         code = (~code) + (code << 21); // code = (code << 21) - code - 1;
         code = code ^ (code >> 24);
-    
+        code = (code + (code << 3)) + (code << 8); // code * 265
+        code = code ^ (code >> 14);
+        code = (code + (code << 2)) + (code << 4
