@@ -17,4 +17,11 @@ public class Mix64Hash extends Int2IntHash {
         code = code ^ (code >> 28);
         code = code + (code << 31);
         code %= size;
-        return code >= 0 ? code : code 
+        return code >= 0 ? code : code + size;
+    }
+
+    @Override
+    public Int2IntHash clone() {
+        return new Mix64Hash(size);
+    }
+}
