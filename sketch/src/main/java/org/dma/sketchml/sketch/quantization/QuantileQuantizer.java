@@ -20,3 +20,9 @@ public class QuantileQuantizer extends Quantizer {
     }
 
     public QuantileQuantizer() {
+        this(Quantizer.DEFAULT_BIN_NUM);
+    }
+
+    @Override
+    public void quantize(double[] values) {
+        long startTime = System.currentTimeMi
