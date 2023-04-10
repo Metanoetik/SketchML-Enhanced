@@ -13,4 +13,10 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
 public class QuantileQuantizer extends Quantizer {
-    private static final Logger LOG =
+    private static final Logger LOG = LoggerFactory.getLogger(QuantileQuantizer.class);
+
+    public QuantileQuantizer(int binNum) {
+        super(binNum);
+    }
+
+    public QuantileQuantizer() {
