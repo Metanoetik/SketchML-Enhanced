@@ -25,4 +25,8 @@ public class QuantileQuantizer extends Quantizer {
 
     @Override
     public void quantize(double[] values) {
-        long startTime = System.currentTimeMi
+        long startTime = System.currentTimeMillis();
+        // 1. create quantile sketch summary
+        n = values.length;
+        HeapQuantileSketch qSketch = new HeapQuantileSketch((long) n);
+   
