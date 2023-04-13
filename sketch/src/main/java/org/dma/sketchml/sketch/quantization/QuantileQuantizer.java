@@ -29,4 +29,9 @@ public class QuantileQuantizer extends Quantizer {
         // 1. create quantile sketch summary
         n = values.length;
         HeapQuantileSketch qSketch = new HeapQuantileSketch((long) n);
+        for (double v : values) {
+            qSketch.update(v);
+        }
+        min = qSketch.getMinValue();
+        max = qSketch.getMaxValue();
    
