@@ -34,4 +34,6 @@ public class QuantileQuantizer extends Quantizer {
         }
         min = qSketch.getMinValue();
         max = qSketch.getMaxValue();
-   
+        // 2. query quantiles, set them as bin edges
+        splits = Maths.unique(qSketch.getQuantiles(binNum));
+        if (splits.length + 1 != b
