@@ -36,4 +36,8 @@ public class QuantileQuantizer extends Quantizer {
         max = qSketch.getMaxValue();
         // 2. query quantiles, set them as bin edges
         splits = Maths.unique(qSketch.getQuantiles(binNum));
-        if (splits.length + 1 != b
+        if (splits.length + 1 != binNum) {
+            LOG.warn(String.format("Actual bin num %d not equal to %d",
+                    splits.length + 1, binNum));
+            binNum = splits.length + 1;
+ 
