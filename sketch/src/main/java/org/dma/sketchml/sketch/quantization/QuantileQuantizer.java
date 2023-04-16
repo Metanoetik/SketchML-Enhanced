@@ -40,4 +40,9 @@ public class QuantileQuantizer extends Quantizer {
             LOG.warn(String.format("Actual bin num %d not equal to %d",
                     splits.length + 1, binNum));
             binNum = splits.length + 1;
- 
+        }
+        // 3. find the zero index
+        findZeroIdx();
+        // 4. find index of each value
+        quantizeToBins(values);
+        LOG.debug(String.format("Quantile qu
