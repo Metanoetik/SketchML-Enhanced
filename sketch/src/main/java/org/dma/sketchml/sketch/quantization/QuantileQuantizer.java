@@ -45,4 +45,9 @@ public class QuantileQuantizer extends Quantizer {
         findZeroIdx();
         // 4. find index of each value
         quantizeToBins(values);
-        LOG.debug(String.format("Quantile qu
+        LOG.debug(String.format("Quantile quantization for %d items cost %d ms",
+                n, System.currentTimeMillis() - startTime));
+    }
+
+    @Override
+    public void parallelQuantize(double[] valu
