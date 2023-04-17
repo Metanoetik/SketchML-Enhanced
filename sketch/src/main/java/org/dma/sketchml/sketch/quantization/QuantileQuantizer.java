@@ -50,4 +50,6 @@ public class QuantileQuantizer extends Quantizer {
     }
 
     @Override
-    public void parallelQuantize(double[] valu
+    public void parallelQuantize(double[] values) throws InterruptedException, ExecutionException {
+        long startTime = System.currentTimeMillis();
+        // 1. create quantile sketch summary in para
