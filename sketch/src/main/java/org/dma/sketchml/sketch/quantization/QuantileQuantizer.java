@@ -55,4 +55,7 @@ public class QuantileQuantizer extends Quantizer {
         // 1. create quantile sketch summary in parallel
         n = values.length;
         // 1.1. each thread create a quantile sketch based on a portion of data
-        int threadNum = Constants.Parall
+        int threadNum = Constants.Parallel.getParallelism();
+        ExecutorService threadPool = Constants.Parallel.getThreadPool();
+        Future<HeapQuantileSketch>[] futures = new Future[threadNum];
+ 
