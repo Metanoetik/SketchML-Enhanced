@@ -60,4 +60,8 @@ public class QuantileQuantizer extends Quantizer {
         Future<HeapQuantileSketch>[] futures = new Future[threadNum];
         for (int i = 0; i < threadNum; i++) {
             int threadId = i;
-            futures[threadId] = threadPool.submit(new Callable<Hea
+            futures[threadId] = threadPool.submit(new Callable<HeapQuantileSketch>() {
+                @Override
+                public HeapQuantileSketch call() throws Exception {
+                    int elementPerThread = n / threadNum;
+          
