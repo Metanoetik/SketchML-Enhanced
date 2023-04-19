@@ -58,4 +58,6 @@ public class QuantileQuantizer extends Quantizer {
         int threadNum = Constants.Parallel.getParallelism();
         ExecutorService threadPool = Constants.Parallel.getThreadPool();
         Future<HeapQuantileSketch>[] futures = new Future[threadNum];
- 
+        for (int i = 0; i < threadNum; i++) {
+            int threadId = i;
+            futures[threadId] = threadPool.submit(new Callable<Hea
