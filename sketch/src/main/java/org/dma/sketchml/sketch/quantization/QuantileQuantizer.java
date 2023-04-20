@@ -64,4 +64,6 @@ public class QuantileQuantizer extends Quantizer {
                 @Override
                 public HeapQuantileSketch call() throws Exception {
                     int elementPerThread = n / threadNum;
-          
+                    int from = threadId * elementPerThread;
+                    int to = threadId + 1 == threadNum ? n : from + elementPerThread;
+                
