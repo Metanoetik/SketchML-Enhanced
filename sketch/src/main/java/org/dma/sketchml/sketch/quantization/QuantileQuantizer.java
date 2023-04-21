@@ -66,4 +66,6 @@ public class QuantileQuantizer extends Quantizer {
                     int elementPerThread = n / threadNum;
                     int from = threadId * elementPerThread;
                     int to = threadId + 1 == threadNum ? n : from + elementPerThread;
-                
+                    HeapQuantileSketch qSketch = new HeapQuantileSketch((long) (to - from));
+                    for (int itemId = from; itemId < to; itemId++) {
+             
