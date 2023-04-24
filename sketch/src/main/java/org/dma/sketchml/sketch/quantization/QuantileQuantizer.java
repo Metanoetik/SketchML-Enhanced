@@ -74,4 +74,7 @@ public class QuantileQuantizer extends Quantizer {
                 }
             });
         }
-        // 1.2. merge a
+        // 1.2. merge all quantile sketches together
+        HeapQuantileSketch qSketch = futures[0].get();
+        for (int i = 1; i < threadNum; i++) {
+            qSketch.merge(futures[i
