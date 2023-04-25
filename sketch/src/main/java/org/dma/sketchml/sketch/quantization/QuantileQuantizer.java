@@ -77,4 +77,9 @@ public class QuantileQuantizer extends Quantizer {
         // 1.2. merge all quantile sketches together
         HeapQuantileSketch qSketch = futures[0].get();
         for (int i = 1; i < threadNum; i++) {
-            qSketch.merge(futures[i
+            qSketch.merge(futures[i].get());
+        }
+        min = qSketch.getMinValue();
+        max = qSketch.getMaxValue();
+        // 2. query quantiles, set them as bin edges
+        split
