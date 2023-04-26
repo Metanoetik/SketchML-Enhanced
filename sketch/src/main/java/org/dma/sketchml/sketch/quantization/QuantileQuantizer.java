@@ -82,4 +82,8 @@ public class QuantileQuantizer extends Quantizer {
         min = qSketch.getMinValue();
         max = qSketch.getMaxValue();
         // 2. query quantiles, set them as bin edges
-        split
+        splits = qSketch.getQuantiles(binNum);
+        // 3. find the zero index
+        findZeroIdx();
+        // 4. find index of each value
+        parallelQuantizeToBins(values)
