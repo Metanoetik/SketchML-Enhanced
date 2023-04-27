@@ -92,4 +92,8 @@ public class QuantileQuantizer extends Quantizer {
     }
 
     @Override
-    publi
+    public QuantizationType quantizationType() {
+        return QuantizationType.QUANTILE;
+    }
+
+}
