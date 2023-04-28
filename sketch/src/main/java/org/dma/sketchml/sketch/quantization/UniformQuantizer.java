@@ -69,3 +69,10 @@ public class UniformQuantizer extends Quantizer {
         LOG.debug(String.format("Uniform quantization for %d items cost %d ms",
                 n, System.currentTimeMillis() - startTime));
     }
+
+    @Override
+    public QuantizationType quantizationType() {
+        return QuantizationType.UNIFORM;
+    }
+
+}
