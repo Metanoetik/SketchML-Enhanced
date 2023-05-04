@@ -31,3 +31,92 @@ public class MinMaxSketch implements Serializable {
         this.table = new int[rowNum * colNum];
         this.zeroValue = zeroValue;
         int maxValue = compare(Integer.MIN_VALUE, Integer.MAX_VALUE) <= 0
+                ? Integer.MIN_VALUE : Integer.MAX_VALUE;
+        Arrays.fill(table, maxValue);
+        this.hashes = HashFactory.getRandomInt2IntHashes(rowNum, colNum);
+    }
+
+    public MinMaxSketch(int colNum, int zeroValue) {
+        this(DEFAULT_MINMAXSKETCH_ROW_NUM, colNum, zeroValue);
+    }
+
+    /**
+     * Min: insert the minimal (closest to `zeroValue`) value
+     *
+     * @param key
+     * @param value
+     */
+    public void insert(int key, int value) {
+        for (int i = 0; i < rowNum; i++) {
+            int code = hashes[i].hash(key);
+            int index = i * colNum + code;
+            if (compare(value, table[index]) < 0)
+                table[index] = value;
+        }
+    }
+
+
+    /**
+     * Max: return the maximal (furthest to `zeroValue`) value
+     *
+     * @param key
+     * @return
+     */
+    public int query(int key) {
+        int res = zeroValue;
+        for (int i = 0; i < rowNum; i++) {
+            int code = hashes[i].hash(key);
+            int index = i * colNum + code;
+            if (compare(table[index], res) > 0)
+                res = table[index];
+        }
+        return res;
+    }
+
+    /**
+     * Compare two numbers' distances w.r.t. `zeroValue`
+     *
+     * @param v1
+     * @param v2
+     * @return
+     */
+    private int compare(int v1, int v2) {
+        int d1 = Math.abs(v1 - zeroValue);
+        int d2 = Math.abs(v2 - zeroValue);
+        return d1 - d2;
+    }
+
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.writeInt(rowNum);
+        oos.writeInt(colNum);
+        oos.writeInt(zeroValue);
+        for (Int2IntHash hash : hashes)
+            oos.writeObject(hash);
+        BinaryEncoder huffman = new HuffmanEncoder();
+        huffman.encode(table);
+        oos.writeObject(huffman);
+    }
+
+    private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
+        rowNum = ois.readInt();
+        colNum = ois.readInt();
+        zeroValue = ois.readInt();
+        hashes = new Int2IntHash[rowNum];
+        for (int i = 0; i < rowNum; i++)
+            hashes[i] = (Int2IntHash) ois.readObject();
+        BinaryEncoder encoder = (BinaryEncoder) ois.readObject();
+        table = encoder.decode();
+    }
+
+    public int getRowNum() {
+        return rowNum;
+    }
+
+    public int getColNum() {
+        return colNum;
+    }
+
+    public int getZeroValue() {
+        return zeroValue;
+    }
+}
