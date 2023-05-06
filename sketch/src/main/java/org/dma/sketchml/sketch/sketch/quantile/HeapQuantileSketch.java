@@ -8,4 +8,6 @@ import java.util.Arrays;
  * Implementation of quantile sketch on the Java heap
  * bashed on `DataSketches` of Yahoo!
  */
-public c
+public class HeapQuantileSketch extends QuantileSketch {
+    private int k; // parameter that controls space usage
+    public static final int DEF
