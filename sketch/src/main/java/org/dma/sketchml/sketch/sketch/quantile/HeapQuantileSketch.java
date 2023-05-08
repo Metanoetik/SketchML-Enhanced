@@ -19,4 +19,7 @@ public class HeapQuantileSketch extends QuantileSketch {
      * The base buffer has length 2*K but might not be full and isn't necessarily sorted.
      * The base buffer precedes the level buffers.
      *
-     * The lev
+     * The levels arrays require quite a bit of explanation, which we defer until later.
+     */
+    private double[] combinedBuffer;
+    private int combinedBufferCapacity; // equa
