@@ -16,4 +16,7 @@ public class HeapQuantileSketch extends QuantileSketch {
      * This single array contains the base buffer plus all levels some of which may not be used.
      * A level is of size K and is either full and sorted, or not used. A "not used" buffer may have
      * garbage. Whether a level buffer used or not is indicated by the bitPattern_.
-     * The base buffer
+     * The base buffer has length 2*K but might not be full and isn't necessarily sorted.
+     * The base buffer precedes the level buffers.
+     *
+     * The lev
