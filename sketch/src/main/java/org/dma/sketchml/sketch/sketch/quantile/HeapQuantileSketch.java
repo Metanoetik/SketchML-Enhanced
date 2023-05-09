@@ -22,4 +22,6 @@ public class HeapQuantileSketch extends QuantileSketch {
      * The levels arrays require quite a bit of explanation, which we defer until later.
      */
     private double[] combinedBuffer;
-    private int combinedBufferCapacity; // equa
+    private int combinedBufferCapacity; // equals combinedBuffer.length
+    private int baseBufferCount; // #samples currently in base buffer (= n % (2*k))
+    private long bitPattern; // active level
