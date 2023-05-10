@@ -28,4 +28,9 @@ public class HeapQuantileSketch extends QuantileSketch {
     private static final int MIN_BASE_BUF_SIZE = 4;
 
     /**
-     * data structure for answering quantile 
+     * data structure for answering quantile queries
+     */
+    private double[] samplesArr; // array of size samples
+    private long[] weightsArr; // array of cut points
+
+    public HeapQuantileSketch(int k, long est
