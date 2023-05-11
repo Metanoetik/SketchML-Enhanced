@@ -33,4 +33,12 @@ public class HeapQuantileSketch extends QuantileSketch {
     private double[] samplesArr; // array of size samples
     private long[] weightsArr; // array of cut points
 
-    public HeapQuantileSketch(int k, long est
+    public HeapQuantileSketch(int k, long estimateN) {
+        super(estimateN);
+        QSketchUtils.checkK(k);
+        this.k = k;
+        reset();
+    }
+
+    public HeapQuantileSketch() {
+        this(DEF
