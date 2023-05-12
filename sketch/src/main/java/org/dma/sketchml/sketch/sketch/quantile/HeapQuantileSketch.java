@@ -41,4 +41,12 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     public HeapQuantileSketch() {
-        this(DEF
+        this(DEFAULT_K, -1L);
+    }
+
+    public HeapQuantileSketch(int k) {
+        this(k, -1L);
+    }
+
+    public HeapQuantileSketch(long estimateN) {
+        this(DEFAULT_K, estimateN)
