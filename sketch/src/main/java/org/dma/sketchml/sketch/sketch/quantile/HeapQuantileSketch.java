@@ -49,4 +49,11 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     public HeapQuantileSketch(long estimateN) {
-        this(DEFAULT_K, estimateN)
+        this(DEFAULT_K, estimateN);
+    }
+
+    @Override
+    public void reset() {
+        n = 0;
+        if (estimateN < 0)
+            combinedBufferCapacity = Math.min(MIN_BASE_
