@@ -56,4 +56,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     public void reset() {
         n = 0;
         if (estimateN < 0)
-            combinedBufferCapacity = Math.min(MIN_BASE_
+            combinedBufferCapacity = Math.min(MIN_BASE_BUF_SIZE, k * 2);
+        else if (estimateN < k * 2)
+            combinedBufferCapacity = k * 4;
+        else
+            combinedBufferC
