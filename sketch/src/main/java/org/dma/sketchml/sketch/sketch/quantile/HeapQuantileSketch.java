@@ -60,4 +60,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         else if (estimateN < k * 2)
             combinedBufferCapacity = k * 4;
         else
-            combinedBufferC
+            combinedBufferCapacity = QSketchUtils.needBufferCapacity(k, estimateN);
+        combinedBuffer = new double[combinedBufferCapacity];
+        baseBufferCount = 0;
+        bi
