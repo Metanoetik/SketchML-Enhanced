@@ -63,4 +63,12 @@ public class HeapQuantileSketch extends QuantileSketch {
             combinedBufferCapacity = QSketchUtils.needBufferCapacity(k, estimateN);
         combinedBuffer = new double[combinedBufferCapacity];
         baseBufferCount = 0;
-        bi
+        bitPattern = 0L;
+        minValue = Double.MAX_VALUE;
+        maxValue = Double.MIN_VALUE;
+        samplesArr = null;
+        weightsArr = null;
+    }
+
+    @Override
+    public vo
