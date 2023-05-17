@@ -71,4 +71,7 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     @Override
-    public vo
+    public void update(double value) {
+        if (Double.isNaN(value))
+            throw new QuantileSketchException("Encounter NaN value");
+        maxValue = Math.max(ma
