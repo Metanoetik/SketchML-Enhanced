@@ -85,4 +85,8 @@ public class HeapQuantileSketch extends QuantileSketch {
             fullBaseBufferPropagation();
     }
 
-    private void ensureBaseBuf
+    private void ensureBaseBuffer() {
+        final double[] baseBuffer = combinedBuffer;
+        int oldSize = combinedBufferCapacity;
+        if (oldSize >= k * 2)
+            th
