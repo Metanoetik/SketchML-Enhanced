@@ -74,4 +74,9 @@ public class HeapQuantileSketch extends QuantileSketch {
     public void update(double value) {
         if (Double.isNaN(value))
             throw new QuantileSketchException("Encounter NaN value");
-        maxValue = Math.max(ma
+        maxValue = Math.max(maxValue, value);
+        minValue = Math.min(minValue, value);
+
+        if (baseBufferCount + 1 > combinedBufferCapacity)
+            ensureBaseBuffer();
+        combinedBuffe
