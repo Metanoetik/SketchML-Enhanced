@@ -89,4 +89,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         final double[] baseBuffer = combinedBuffer;
         int oldSize = combinedBufferCapacity;
         if (oldSize >= k * 2)
-            th
+            throw new QuantileSketchException("Buffer over size");
+        int newSize = Math.max(Math.min(k * 2, oldSize * 2), 1);
+        combinedBufferCapacity = newSize;
+      
