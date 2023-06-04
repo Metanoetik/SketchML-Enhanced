@@ -96,4 +96,7 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     private void ensureLevels(long newN) {
-        int numLevels = 1 + (63 - Long.number
+        int numLevels = 1 + (63 - Long.numberOfLeadingZeros(newN / (k * 2)));
+        int spaceNeeded = k * (numLevels + 2);
+        if (spaceNeeded <= combinedBufferCapacity) return;
+        f
