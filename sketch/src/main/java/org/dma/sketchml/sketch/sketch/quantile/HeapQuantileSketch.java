@@ -92,4 +92,8 @@ public class HeapQuantileSketch extends QuantileSketch {
             throw new QuantileSketchException("Buffer over size");
         int newSize = Math.max(Math.min(k * 2, oldSize * 2), 1);
         combinedBufferCapacity = newSize;
-      
+        combinedBuffer = Arrays.copyOf(baseBuffer, newSize);
+    }
+
+    private void ensureLevels(long newN) {
+        int numLevels = 1 + (63 - Long.number
