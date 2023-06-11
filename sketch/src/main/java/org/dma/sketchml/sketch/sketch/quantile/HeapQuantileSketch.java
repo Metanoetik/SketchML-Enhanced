@@ -99,4 +99,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         int numLevels = 1 + (63 - Long.numberOfLeadingZeros(newN / (k * 2)));
         int spaceNeeded = k * (numLevels + 2);
         if (spaceNeeded <= combinedBufferCapacity) return;
-        f
+        final double[] baseBuffer = combinedBuffer;
+        combinedBuffer = Arrays.copyOf(baseBuffer, spaceNeeded);
+        combinedBufferCapacity = spaceNeeded;
+    }
+
+    private void
