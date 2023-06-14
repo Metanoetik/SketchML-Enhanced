@@ -104,4 +104,8 @@ public class HeapQuantileSketch extends QuantileSketch {
         combinedBufferCapacity = spaceNeeded;
     }
 
-    private void
+    private void fullBaseBufferPropagation() {
+        ensureLevels(n);
+        final double[] baseBuffer = combinedBuffer;
+        Arrays.sort(baseBuffer, 0, baseBufferCount);
+       
