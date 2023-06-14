@@ -108,4 +108,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         ensureLevels(n);
         final double[] baseBuffer = combinedBuffer;
         Arrays.sort(baseBuffer, 0, baseBufferCount);
-       
+        inPlacePropagationUpdate(0, baseBuffer, 0);
+        baseBufferCount = 0;
+        QSketchUtils.checkBitPattern(bitPattern, n, k);
+    }
+
+    private void inPl
