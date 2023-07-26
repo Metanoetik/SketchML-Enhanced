@@ -113,4 +113,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         QSketchUtils.checkBitPattern(bitPattern, n, k);
     }
 
-    private void inPl
+    private void inPlacePropagationUpdate(int beginLevel, final double[] buf, int bufBeginPos) {
+        final double[] levelsArr = combinedBuffer;
+        int endLevel = beginLevel;
+        long tm
