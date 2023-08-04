@@ -116,4 +116,6 @@ public class HeapQuantileSketch extends QuantileSketch {
     private void inPlacePropagationUpdate(int beginLevel, final double[] buf, int bufBeginPos) {
         final double[] levelsArr = combinedBuffer;
         int endLevel = beginLevel;
-        long tm
+        long tmp = bitPattern >>> beginLevel;
+        while ((tmp & 1) != 0) { tmp >>>= 1; endLevel++; }
+        QSketchUtils.compactBuffer(buf, bufBeginPos, levelsArr, 
