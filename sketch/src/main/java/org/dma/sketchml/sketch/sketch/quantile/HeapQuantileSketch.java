@@ -118,4 +118,6 @@ public class HeapQuantileSketch extends QuantileSketch {
         int endLevel = beginLevel;
         long tmp = bitPattern >>> beginLevel;
         while ((tmp & 1) != 0) { tmp >>>= 1; endLevel++; }
-        QSketchUtils.compactBuffer(buf, bufBeginPos, levelsArr, 
+        QSketchUtils.compactBuffer(buf, bufBeginPos, levelsArr, (endLevel + 2) * k, k);
+        QSketchUtils.levelwisePropagation(bitPattern, k, beginLevel, endLevel, buf, bufBeginPos, levelsArr);
+        bitPattern += 1L << beginLev
