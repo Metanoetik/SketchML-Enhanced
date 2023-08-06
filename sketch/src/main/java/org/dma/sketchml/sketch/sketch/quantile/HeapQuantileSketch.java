@@ -126,4 +126,7 @@ public class HeapQuantileSketch extends QuantileSketch {
     public void makeSummary() {
         int baseBufferItems = (int)(n % (k * 2));
         QSketchUtils.checkBitPattern(bitPattern, n, k);
-        int
+        int validLevels = Long.bitCount(bitPattern);
+        int numSamples = baseBufferItems + validLevels * k;
+        samplesArr = new double[numSamples];
+        
