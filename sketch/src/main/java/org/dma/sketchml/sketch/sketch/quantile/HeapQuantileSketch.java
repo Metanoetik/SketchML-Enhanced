@@ -129,4 +129,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         int validLevels = Long.bitCount(bitPattern);
         int numSamples = baseBufferItems + validLevels * k;
         samplesArr = new double[numSamples];
-        
+        weightsArr = new long[numSamples + 1];
+
+        copyBuf2Arr(numSamples);
+        QSketchUtils.blockyMergeSort(samplesArr, weightsArr, numSampl
