@@ -132,4 +132,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         weightsArr = new long[numSamples + 1];
 
         copyBuf2Arr(numSamples);
-        QSketchUtils.blockyMergeSort(samplesArr, weightsArr, numSampl
+        QSketchUtils.blockyMergeSort(samplesArr, weightsArr, numSamples, k);
+
+        long cnt = 0L;
+        for (int i = 0; i <= numSamples; i++) {
+            long newCnt = cnt + weightsArr[i];
+            weightsArr[i] = cn
