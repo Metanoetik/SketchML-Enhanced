@@ -150,4 +150,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         // copy the highest levels
         for (int level = 0; bp != 0; level++, bp >>>= 1) {
             weight *= 2;
- 
+            if ((bp & 1) != 0) {
+                int offset = k * (level + 2);
+                for (int i = 0; i < k; i++) {
+                    samplesAr
