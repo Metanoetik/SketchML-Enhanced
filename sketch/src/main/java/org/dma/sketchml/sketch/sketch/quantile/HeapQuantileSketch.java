@@ -145,4 +145,9 @@ public class HeapQuantileSketch extends QuantileSketch {
     private void copyBuf2Arr(int numSamples) {
         long weight = 1L;
         int cur = 0;
-        long bp = bitPa
+        long bp = bitPattern;
+
+        // copy the highest levels
+        for (int level = 0; bp != 0; level++, bp >>>= 1) {
+            weight *= 2;
+ 
