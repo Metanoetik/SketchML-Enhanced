@@ -137,4 +137,12 @@ public class HeapQuantileSketch extends QuantileSketch {
         long cnt = 0L;
         for (int i = 0; i <= numSamples; i++) {
             long newCnt = cnt + weightsArr[i];
-            weightsArr[i] = cn
+            weightsArr[i] = cnt;
+            cnt = newCnt;
+        }
+    }
+
+    private void copyBuf2Arr(int numSamples) {
+        long weight = 1L;
+        int cur = 0;
+        long bp = bitPa
