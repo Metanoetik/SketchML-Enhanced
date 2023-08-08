@@ -160,4 +160,8 @@ public class HeapQuantileSketch extends QuantileSketch {
             }
         }
 
-        // copy ba
+        // copy baseBuffer
+        int startBlk = cur;
+        for (int i = 0; i < baseBufferCount; i++) {
+            samplesArr[cur] = combinedBuffer[i];
+            weightsArr[c
