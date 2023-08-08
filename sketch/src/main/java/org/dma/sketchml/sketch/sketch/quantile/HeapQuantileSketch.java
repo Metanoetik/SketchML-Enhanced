@@ -153,4 +153,11 @@ public class HeapQuantileSketch extends QuantileSketch {
             if ((bp & 1) != 0) {
                 int offset = k * (level + 2);
                 for (int i = 0; i < k; i++) {
-                    samplesAr
+                    samplesArr[cur] = combinedBuffer[i + offset];
+                    weightsArr[cur] = weight;
+                    cur++;
+                }
+            }
+        }
+
+        // copy ba
