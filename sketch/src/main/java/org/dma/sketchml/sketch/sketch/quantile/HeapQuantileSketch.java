@@ -164,4 +164,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         int startBlk = cur;
         for (int i = 0; i < baseBufferCount; i++) {
             samplesArr[cur] = combinedBuffer[i];
-            weightsArr[c
+            weightsArr[cur] = 1L;
+            cur++;
+        }
+        weightsArr[cur] = 0L;
+        if (cur != numSamples)
+            throw new QuantileSketchException(
