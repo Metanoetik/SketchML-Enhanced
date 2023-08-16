@@ -169,4 +169,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         }
         weightsArr[cur] = 0L;
         if (cur != numSamples)
-            throw new QuantileSketchException(
+            throw new QuantileSketchException("Missing items when copying buffer to array");
+        Arrays.sort(samplesArr, startBlk, cur);
+    }
+
+    @Override
+    public void merge(
