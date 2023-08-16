@@ -178,4 +178,10 @@ public class HeapQuantileSketch extends QuantileSketch {
         if (other instanceof HeapQuantileSketch) {
             merge((HeapQuantileSketch) other);
         } else {
-            throw new QuantileSketchExcepti
+            throw new QuantileSketchException("Cannot merge different " +
+                    "kinds of quantile sketches");
+        }
+    }
+
+    public void merge(HeapQuantileSketch other) {
+   
