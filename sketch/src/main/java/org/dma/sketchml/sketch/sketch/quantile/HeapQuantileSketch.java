@@ -174,4 +174,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     @Override
-    public void merge(
+    public void merge(QuantileSketch other) {
+        if (other instanceof HeapQuantileSketch) {
+            merge((HeapQuantileSketch) other);
+        } else {
+            throw new QuantileSketchExcepti
