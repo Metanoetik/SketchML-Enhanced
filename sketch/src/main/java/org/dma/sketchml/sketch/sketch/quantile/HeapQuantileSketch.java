@@ -184,4 +184,6 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     public void merge(HeapQuantileSketch other) {
-   
+        if (other == null || other.isEmpty()) return;
+        if (other.k != this.k)
+            throw new QuantileSketchException("Merge sketches with
