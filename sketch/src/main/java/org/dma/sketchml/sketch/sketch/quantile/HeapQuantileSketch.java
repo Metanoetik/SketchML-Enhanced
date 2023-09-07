@@ -195,4 +195,10 @@ public class HeapQuantileSketch extends QuantileSketch {
 
         // merge two non-empty quantile sketches
         long totalN = this.n + other.n;
-        for (int i = 0; i  < other.baseBufferCount; i
+        for (int i = 0; i  < other.baseBufferCount; i++) {
+            update(other.combinedBuffer[i]);
+        }
+        ensureLevels(totalN);
+
+        final double[] auxBuf = new double[k * 2];
+      
