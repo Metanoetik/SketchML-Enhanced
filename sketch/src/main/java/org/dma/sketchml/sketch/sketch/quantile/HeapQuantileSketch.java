@@ -190,4 +190,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         QSketchUtils.checkBitPattern(other.bitPattern, other.n, other.k);
         if (this.isEmpty()) {
             this.copy(other);
-            retu
+            return;
+        }
+
+        // merge two non-empty quantile sketches
+        long totalN = this.n + other.n;
+        for (int i = 0; i  < other.baseBufferCount; i
