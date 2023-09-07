@@ -186,4 +186,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     public void merge(HeapQuantileSketch other) {
         if (other == null || other.isEmpty()) return;
         if (other.k != this.k)
-            throw new QuantileSketchException("Merge sketches with
+            throw new QuantileSketchException("Merge sketches with different k");
+        QSketchUtils.checkBitPattern(other.bitPattern, other.n, other.k);
+        if (this.isEmpty()) {
+            this.copy(other);
+            retu
