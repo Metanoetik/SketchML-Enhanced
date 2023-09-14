@@ -201,4 +201,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         ensureLevels(totalN);
 
         final double[] auxBuf = new double[k * 2];
-      
+        long bp = other.bitPattern;
+        for (int level = 0; bp != 0L; level++, bp >>>= 1) {
+            if ((bp & 1L) != 0L) {
+                inPlacePropagationMerge(level
