@@ -210,4 +210,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         }
 
         this.n = totalN;
-        this.max
+        this.maxValue = Math.max(this.maxValue, other.maxValue);
+        this.minValue = Math.min(this.minValue, other.minValue);
+        this.samplesArr = null;
+        this.weightsArr 
