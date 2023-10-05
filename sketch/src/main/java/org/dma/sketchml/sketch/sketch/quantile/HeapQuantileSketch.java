@@ -213,4 +213,8 @@ public class HeapQuantileSketch extends QuantileSketch {
         this.maxValue = Math.max(this.maxValue, other.maxValue);
         this.minValue = Math.min(this.minValue, other.minValue);
         this.samplesArr = null;
-        this.weightsArr 
+        this.weightsArr = null;
+    }
+
+    private void inPlacePropagationMerge(int beginLevel, final double[] buf, int bufStart,
+                                         final double[] auxBuf, i
