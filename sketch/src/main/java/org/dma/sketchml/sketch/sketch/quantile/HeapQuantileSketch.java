@@ -217,4 +217,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     private void inPlacePropagationMerge(int beginLevel, final double[] buf, int bufStart,
-                                         final double[] auxBuf, i
+                                         final double[] auxBuf, int auxBufStart) {
+        final double[] levelsArr = combinedBuffer;
+        int endLevel = beginLevel;
+        long tmp = bitPattern >>> beginLevel;
+        while ((tm
