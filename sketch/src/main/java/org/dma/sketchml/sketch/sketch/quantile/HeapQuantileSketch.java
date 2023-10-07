@@ -221,4 +221,6 @@ public class HeapQuantileSketch extends QuantileSketch {
         final double[] levelsArr = combinedBuffer;
         int endLevel = beginLevel;
         long tmp = bitPattern >>> beginLevel;
-        while ((tm
+        while ((tmp & 1) != 0) { tmp >>>= 1; endLevel++; }
+        System.arraycopy(buf, bufStart, levelsArr, k * (endLevel + 2), k);
+        QSketchUtils.levelwisePropa
