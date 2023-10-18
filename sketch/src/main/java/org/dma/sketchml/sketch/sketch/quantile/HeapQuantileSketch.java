@@ -223,4 +223,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         long tmp = bitPattern >>> beginLevel;
         while ((tmp & 1) != 0) { tmp >>>= 1; endLevel++; }
         System.arraycopy(buf, bufStart, levelsArr, k * (endLevel + 2), k);
-        QSketchUtils.levelwisePropa
+        QSketchUtils.levelwisePropagation(bitPattern, k, beginLevel, endLevel, auxBuf, auxBufStart, levelsArr);
+        bitPattern += 1L << beginLevel;
+    }
+
+    public void copy(HeapQuantileSketch other) {
+        this.n
