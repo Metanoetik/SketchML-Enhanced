@@ -228,4 +228,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     public void copy(HeapQuantileSketch other) {
-        this.n
+        this.n = other.n;
+        this.minValue = other.minValue;
+        this.maxValue = other.maxValue;
+        if (this.estimateN == -1) {
+            this.combinedBuffer
