@@ -234,4 +234,7 @@ public class HeapQuantileSketch extends QuantileSketch {
         if (this.estimateN == -1) {
             this.combinedBufferCapacity = other.combinedBufferCapacity;
             this.combinedBuffer = other.combinedBuffer.clone();
-        } else if (other.combinedBufferCapacity > th
+        } else if (other.combinedBufferCapacity > this.combinedBufferCapacity) {
+            this.combinedBufferCapacity = other.combinedBufferCapacity;
+            this.combinedBuffer = other.combinedBuffer.clone();
+        } else 
