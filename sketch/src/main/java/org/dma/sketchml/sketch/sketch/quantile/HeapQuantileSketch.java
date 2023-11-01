@@ -232,4 +232,6 @@ public class HeapQuantileSketch extends QuantileSketch {
         this.minValue = other.minValue;
         this.maxValue = other.maxValue;
         if (this.estimateN == -1) {
-            this.combinedBuffer
+            this.combinedBufferCapacity = other.combinedBufferCapacity;
+            this.combinedBuffer = other.combinedBuffer.clone();
+        } else if (other.combinedBufferCapacity > th
