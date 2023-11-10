@@ -241,4 +241,7 @@ public class HeapQuantileSketch extends QuantileSketch {
             System.arraycopy(other.combinedBuffer, 0,
                     this.combinedBuffer, 0, other.combinedBufferCapacity);
         }
-        this.baseBufferCount = other
+        this.baseBufferCount = other.baseBufferCount;
+        this.bitPattern = other.bitPattern;
+        if (other.samplesArr != null && other.weightsArr != null) {
+            this.samplesArr = oth
