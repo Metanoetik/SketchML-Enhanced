@@ -250,4 +250,9 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     @Override
-    public doubl
+    public double getQuantile(double fraction) {
+        QSketchUtils.checkFraction(fraction);
+        if (samplesArr == null || weightsArr == null)
+            makeSummary();
+
+        if (samplesArr.leng
