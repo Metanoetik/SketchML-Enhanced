@@ -244,4 +244,10 @@ public class HeapQuantileSketch extends QuantileSketch {
         this.baseBufferCount = other.baseBufferCount;
         this.bitPattern = other.bitPattern;
         if (other.samplesArr != null && other.weightsArr != null) {
-            this.samplesArr = oth
+            this.samplesArr = other.samplesArr.clone();
+            this.weightsArr = other.weightsArr.clone();
+        }
+    }
+
+    @Override
+    public doubl
