@@ -255,4 +255,11 @@ public class HeapQuantileSketch extends QuantileSketch {
         if (samplesArr == null || weightsArr == null)
             makeSummary();
 
-        if (samplesArr.leng
+        if (samplesArr.length == 0)
+            return Double.NaN;
+
+        if (fraction == 0.0)
+            return minValue;
+        else if (fraction == 1.0)
+            return maxValue;
+  
