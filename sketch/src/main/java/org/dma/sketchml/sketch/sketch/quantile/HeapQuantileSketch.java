@@ -262,4 +262,10 @@ public class HeapQuantileSketch extends QuantileSketch {
             return minValue;
         else if (fraction == 1.0)
             return maxValue;
-  
+        else
+            return getQuantileFromArr(fraction);
+    }
+
+    @Override
+    public double[] getQuantiles(double[] fractions) {
+        QSketchUtils.checkFr
