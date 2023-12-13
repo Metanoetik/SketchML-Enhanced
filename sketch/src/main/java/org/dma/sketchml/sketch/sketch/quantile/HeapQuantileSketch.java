@@ -268,4 +268,9 @@ public class HeapQuantileSketch extends QuantileSketch {
 
     @Override
     public double[] getQuantiles(double[] fractions) {
-        QSketchUtils.checkFr
+        QSketchUtils.checkFractions(fractions);
+        if (samplesArr == null || weightsArr == null)
+            makeSummary();
+
+        double[] res = new double[fractions.length];
+        if (samplesArr.length == 
