@@ -273,4 +273,10 @@ public class HeapQuantileSketch extends QuantileSketch {
             makeSummary();
 
         double[] res = new double[fractions.length];
-        if (samplesArr.length == 
+        if (samplesArr.length == 0) {
+            Arrays.fill(res, Double.NaN);
+            return res;
+        }
+
+        for (int i = 0; i < fractions.length; i++) {
+            if (fractions[i] ==
