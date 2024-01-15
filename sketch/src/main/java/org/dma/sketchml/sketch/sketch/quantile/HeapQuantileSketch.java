@@ -291,4 +291,9 @@ public class HeapQuantileSketch extends QuantileSketch {
 
     @Override
     public double[] getQuantiles(int evenPartition) {
-        QSketchUtils.checkEvenPartiotion(e
+        QSketchUtils.checkEvenPartiotion(evenPartition);
+        if (samplesArr == null || weightsArr == null)
+            makeSummary();
+
+        double[] splits = new double[evenPartition - 1];
+        if (samp
