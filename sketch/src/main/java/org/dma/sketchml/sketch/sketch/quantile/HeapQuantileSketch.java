@@ -296,4 +296,11 @@ public class HeapQuantileSketch extends QuantileSketch {
             makeSummary();
 
         double[] splits = new double[evenPartition - 1];
-        if (samp
+        if (samplesArr.length == 0) {
+            Arrays.fill(splits, Double.NaN);
+            return splits;
+        }
+
+        int index = 0;
+        double curFrac = 1.0 / evenPartition;
+       
