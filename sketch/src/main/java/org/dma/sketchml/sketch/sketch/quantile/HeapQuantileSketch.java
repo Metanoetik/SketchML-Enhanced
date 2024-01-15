@@ -284,4 +284,11 @@ public class HeapQuantileSketch extends QuantileSketch {
             else if (fractions[i] == 1.0)
                 res[i] = maxValue;
             else
-                res[i] = getQuantileFromArr
+                res[i] = getQuantileFromArr(fractions[i]);
+        }
+        return res;
+    }
+
+    @Override
+    public double[] getQuantiles(int evenPartition) {
+        QSketchUtils.checkEvenPartiotion(e
