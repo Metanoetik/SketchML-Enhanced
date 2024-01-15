@@ -279,4 +279,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         }
 
         for (int i = 0; i < fractions.length; i++) {
-            if (fractions[i] ==
+            if (fractions[i] == 0.0)
+                res[i] = minValue;
+            else if (fractions[i] == 1.0)
+                res[i] = maxValue;
+            else
+                res[i] = getQuantileFromArr
