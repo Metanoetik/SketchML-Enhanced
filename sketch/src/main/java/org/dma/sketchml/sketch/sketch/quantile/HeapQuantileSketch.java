@@ -310,4 +310,10 @@ public class HeapQuantileSketch extends QuantileSketch {
             int left = index, right = weightsArr.length - 1;
             while (left + 1 < right) {
                 int mid = left + ((right - left) >> 1);
-       
+                if (weightsArr[mid] <= rank)
+                    left = mid;
+                else
+                    right = mid;
+            }
+            splits[i] = samplesArr[left];
+ 
