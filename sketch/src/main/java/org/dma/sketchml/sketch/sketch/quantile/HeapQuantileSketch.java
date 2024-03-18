@@ -306,4 +306,8 @@ public class HeapQuantileSketch extends QuantileSketch {
         double step = 1.0 / evenPartition;
         for (int i = 0; i + 1 < evenPartition; i++) {
             long rank = (long)(n * curFrac);
-            rank = Math.min(rank, n
+            rank = Math.min(rank, n - 1);
+            int left = index, right = weightsArr.length - 1;
+            while (left + 1 < right) {
+                int mid = left + ((right - left) >> 1);
+       
