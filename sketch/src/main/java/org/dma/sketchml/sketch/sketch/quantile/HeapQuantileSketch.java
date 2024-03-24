@@ -316,4 +316,11 @@ public class HeapQuantileSketch extends QuantileSketch {
                     right = mid;
             }
             splits[i] = samplesArr[left];
- 
+            index = left;
+            curFrac += step;
+        }
+        return splits;
+    }
+
+    private double getQuantileFromArr(double fraction) {
+        long rank
