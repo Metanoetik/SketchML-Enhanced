@@ -323,4 +323,8 @@ public class HeapQuantileSketch extends QuantileSketch {
     }
 
     private double getQuantileFromArr(double fraction) {
-        long rank
+        long rank = (long)(n * fraction);
+        if (rank == n) n--;
+        int left = 0, right = weightsArr.length - 1;
+        while (left + 1 < right) {
+            int mi
