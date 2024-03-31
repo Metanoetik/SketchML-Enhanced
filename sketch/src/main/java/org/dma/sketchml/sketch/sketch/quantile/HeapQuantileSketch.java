@@ -327,4 +327,9 @@ public class HeapQuantileSketch extends QuantileSketch {
         if (rank == n) n--;
         int left = 0, right = weightsArr.length - 1;
         while (left + 1 < right) {
-            int mi
+            int mid = left + ((right - left) >> 1);
+            if (weightsArr[mid] <= rank)
+                left = mid;
+            else
+                right = mid;
+      
