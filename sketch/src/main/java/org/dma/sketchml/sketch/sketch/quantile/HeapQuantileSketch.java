@@ -332,4 +332,13 @@ public class HeapQuantileSketch extends QuantileSketch {
                 left = mid;
             else
                 right = mid;
-      
+        }
+        return samplesArr[left];
+    }
+
+    public int getK() {
+        return k;
+    }
+
+
+}
