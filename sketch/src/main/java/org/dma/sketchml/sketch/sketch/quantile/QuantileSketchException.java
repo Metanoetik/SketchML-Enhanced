@@ -7,4 +7,9 @@ public class QuantileSketchException extends SketchMLException {
         super(message);
     }
 
-  
+    public QuantileSketchException(Throwable cause) {
+        super(cause);
+    }
+
+    public QuantileSketchException(String message, Throwable cause) {
+        super(messa
