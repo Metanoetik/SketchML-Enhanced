@@ -12,4 +12,6 @@ public class QuantileSketchException extends SketchMLException {
     }
 
     public QuantileSketchException(String message, Throwable cause) {
-        super(messa
+        super(message, cause);
+    }
+}
