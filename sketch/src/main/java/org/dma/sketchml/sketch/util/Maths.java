@@ -28,4 +28,9 @@ public class Maths {
     }
 
     public static int argmax(int[] array) {
-        int max = array[0], res 
+        int max = array[0], res = 0;
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > max) {
+                max = array[i];
+                res = i;
+            }
