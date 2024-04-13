@@ -9,4 +9,10 @@ public class Maths {
         for (int i = 1; i < 65536; i <<= 1) {
             if (k == i)
                 return true;
-     
+        }
+        return false;
+    }
+
+    public static int log2nlz(int k) {
+        if (k <= 0)
+            throw new SketchMLException("
