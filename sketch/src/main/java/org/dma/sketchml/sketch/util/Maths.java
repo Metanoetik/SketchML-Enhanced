@@ -15,4 +15,11 @@ public class Maths {
 
     public static int log2nlz(int k) {
         if (k <= 0)
-            throw new SketchMLException("
+            throw new SketchMLException("Log for " + k);
+        else
+            return 31 - Integer.numberOfLeadingZeros(k);
+    }
+
+    public static int max(int[] array) {
+        int res = array[0];
+        for 
