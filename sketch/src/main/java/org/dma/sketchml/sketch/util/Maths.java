@@ -22,4 +22,10 @@ public class Maths {
 
     public static int max(int[] array) {
         int res = array[0];
-        for 
+        for (int i = 1; i < array.length; i++)
+            res = Math.max(res, array[i]);
+        return res;
+    }
+
+    public static int argmax(int[] array) {
+        int max = array[0], res 
