@@ -34,3 +34,10 @@ public class Maths {
                 max = array[i];
                 res = i;
             }
+        }
+        return res;
+    }
+
+    public static void shuffle(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--
