@@ -40,4 +40,10 @@ public class Maths {
 
     public static void shuffle(int[] array) {
         Random random = new Random();
-        for (int i = array.length - 1; i > 0; i--
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = random.nextInt(i + 1);
+            int t = array[index];
+            array[index] = array[i];
+            array[i] = t;
+        }
+  
