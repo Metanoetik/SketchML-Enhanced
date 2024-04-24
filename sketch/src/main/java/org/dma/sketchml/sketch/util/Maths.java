@@ -46,4 +46,9 @@ public class Maths {
             array[index] = array[i];
             array[i] = t;
         }
-  
+    }
+
+    public static double[] unique(double[] sorted) {
+        int size = sorted.length, cnt = 1;
+        for (int i = 1; i < size; i++)
+            if (sorted[i
