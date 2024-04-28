@@ -57,4 +57,9 @@ public class Maths {
             double[] res = new double[cnt];
             res[0] = sorted[0];
             int index = 1;
-   
+            for (int i = 1; i < size; i++)
+                if (sorted[i] != sorted[i - 1])
+                    res[index++] = sorted[i];
+            return res;
+        } else {
+ 
