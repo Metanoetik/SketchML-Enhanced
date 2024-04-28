@@ -62,4 +62,7 @@ public class Maths {
                     res[index++] = sorted[i];
             return res;
         } else {
- 
+            return sorted;
+        }
+    }
+}
