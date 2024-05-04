@@ -248,3 +248,151 @@ public class Sort {
                 else
                     return v - v1 > 10e-12 ? 1 : -1;
             }
+
+            public int compare(Double o1, Double o2) {
+                if (Math.abs(o1 - o2) < 10e-12)
+                    return 0;
+                else
+                    return o1 - o2 > 10e-12 ? 1 : -1;
+            }
+        };
+        quickSort(x, y, from, to, cmp);
+    }
+
+    public static void quickSort(int[] array, float[] values, int low, int high) {
+        if (low < high) {
+            int tmp = array[low];
+            float tmpValue = values[low];
+            int ii = low, jj = high;
+            while (ii < jj) {
+                while (ii < jj && array[jj] >= tmp) {
+                    jj--;
+                }
+
+                array[ii] = array[jj];
+                values[ii] = values[jj];
+
+                while (ii < jj && array[ii] <= tmp) {
+                    ii++;
+                }
+
+                array[jj] = array[ii];
+                values[jj] = values[ii];
+            }
+            array[ii] = tmp;
+            values[ii] = tmpValue;
+
+            quickSort(array, values, low, ii - 1);
+            quickSort(array, values, ii + 1, high);
+        }
+    }
+
+
+    private static int med3(double[] x, int a, int b, int c, DoubleComparator comp) {
+        int ab = comp.compare(x[a], x[b]);
+        int ac = comp.compare(x[a], x[c]);
+        int bc = comp.compare(x[b], x[c]);
+        return ab < 0 ? (bc < 0 ? b : (ac < 0 ? c : a)) : (bc > 0 ? b : (ac > 0 ? c : a));
+    }
+
+    private static void vecSwap(double[] x, int a, int b, int n) {
+        for (int i = 0; i < n; ++b) {
+            swap(x, a, b);
+            ++i;
+            ++a;
+        }
+
+    }
+
+    private static void swap(int[] x, int a, int b) {
+        int t = x[a];
+        x[a] = x[b];
+        x[b] = t;
+    }
+
+    private static void swap(double[] x, int a, int b) {
+        double t = x[a];
+        x[a] = x[b];
+        x[b] = t;
+    }
+
+    public static void selectionSort(int[] a, int[] y, int from, int to, IntComparator comp) {
+        for (int i = from; i < to - 1; ++i) {
+            int m = i;
+
+            int u;
+            for (u = i + 1; u < to; ++u) {
+                if (comp.compare(a[u], a[m]) < 0) {
+                    m = u;
+                }
+            }
+
+            if (m != i) {
+                u = a[i];
+                a[i] = a[m];
+                a[m] = u;
+                u = y[i];
+                y[i] = y[m];
+                y[m] = u;
+            }
+        }
+
+    }
+
+    public static void selectionSort(double[] a, double[] y, int from, int to,
+                                     DoubleComparator comp) {
+        for (int i = from; i < to - 1; ++i) {
+            int m = i;
+            for (int u = i + 1; u < to; ++u) {
+                if (comp.compare(a[u], a[m]) < 0) {
+                    m = u;
+                }
+            }
+
+            if (m != i) {
+                double temp = a[i];
+                a[i] = a[m];
+                a[m] = temp;
+                temp = y[i];
+                y[i] = y[m];
+                y[m] = temp;
+            }
+        }
+    }
+
+    public static void merge(int[][] as, int[][] ys, int[] a, int[] y) {
+        int[] ks = new int[as.length];
+        int cur = 0;
+        while (cur < a.length) {
+            int argmin = -1;
+            int min = Integer.MAX_VALUE;
+            for (int i = 0; i < ks.length; i++) {
+                if (ks[i] < as[i].length && as[i][ks[i]] < min) {
+                    argmin = i;
+                    min = as[i][ks[i]];
+                }
+            }
+            a[cur] = as[argmin][ks[argmin]];
+            y[cur] = ys[argmin][ks[argmin]];
+            ks[argmin]++;
+            cur++;
+        }
+    }
+
+    public static void merge(int[][] as, double[][] ys, int[] a, double[] y) {
+        int[] ks = new int[as.length];
+        int cur = 0;
+        while (cur < a.length) {
+            int argmin = -1;
+            int min = Integer.MAX_VALUE;
+            for (int i = 0; i < ks.length; i++) {
+                if (ks[i] < as[i].length && as[i][ks[i]] < min)
+                    argmin = i;
+            }
+            a[cur] = as[argmin][ks[argmin]];
+            y[cur] = ys[argmin][ks[argmin]];
+            ks[argmin]++;
+            cur++;
+        }
+    }
+}
